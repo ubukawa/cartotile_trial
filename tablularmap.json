@@ -1,0 +1,16 @@
+{
+  "tilejson": "2.2.0",
+  "tiles": ["https://www.unvt-test.com:3000/zxy/osm_tile/{z}/{x}/{y}.pbf"],
+  "name": "osm_tile",
+  "attribution": "test",
+  "maxzoom": 15,
+  "minzoom": 6,
+  "bounds": [5.00,35.00,20.00,40.00],
+  "center": [13.40,43.00,6],
+  "vector_layers": [{
+    "id": "osm_tile",
+    "description": "test",
+    "maxzoom": 15,
+    "minzoom": 6
+  }]
+}
