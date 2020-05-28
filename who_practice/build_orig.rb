@@ -61,22 +61,22 @@ console.log(dailyData)
 
 let table = []
 let iso2cds = []
-for (let ISO_A2 in dailyData) {
-  iso2cds.push(ISO_A2)
+for (let iso2cd in dailyData) {
+  iso2cds.push(iso2cd)
   const g = 
-    dailyData[ISO_A2][TYPE] / 
+    dailyData[iso2cd][TYPE] / 
     max[TYPE]
   if (table[g]) {
-    table[g].push(ISO_A2)
+    table[g].push(iso2cd)
   } else {
-    table[g] = [ISO_A2]
+    table[g] = [iso2cd]
   }
 }
 let fillExpression = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'iso2cd'
   ]
 ]
 for (let g in table) {
@@ -103,45 +103,45 @@ let match1 = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'iso2cd'
   ]
 ]
 let match2 = [
-  'ISO_A2',
+  'match',
   [
     'get',
-    'ISO_A2'
+    'iso2cd'
   ]
 ]
 let match3 = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'iso2cd'
   ]
 ]
-for (let ISO_A2 in dailyData) {
-  match1.push(ISO_A2)
-  match1.push(dailyData[ISO_A2]['confirmed'].toString())
-  match2.push(ISO_A2)
+for (let iso2cd in dailyData) {
+  match1.push(iso2cd)
+  match1.push(dailyData[iso2cd]['confirmed'].toString())
+  match2.push(iso2cd)
   match2.push([
     'concat',
     [
       'get',
-      'ISO_A3'
+      'iso3cd'
     ],
     ': ',
-    dailyData[ISO_A2][TYPE]
+    dailyData[iso2cd][TYPE]
   ])
-  match3.push(ISO_A2)
+  match3.push(iso2cd)
   match3.push([
     'concat',
     [
       'get',
-      'NAME'
+      'maplab'
     ],
     ': ',
-    dailyData[ISO_A2][TYPE],
+    dailyData[iso2cd][TYPE],
     ' ',
     TYPE
   ])
@@ -166,12 +166,12 @@ const fillExtrusionHeight = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'iso2cd'
   ]
 ]
-for (let ISO_A2 in dailyData) {
-  fillExtrusionHeight.push([ISO_A2])
-  fillExtrusionHeight.push(dailyData[ISO_A2][TYPE] * 100)
+for (let iso2cd in dailyData) {
+  fillExtrusionHeight.push([iso2cd])
+  fillExtrusionHeight.push(dailyData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
 console.log(fillExtrusionHeight)
@@ -197,9 +197,9 @@ map.on('load', () => {
       'match',
       [
         'get',
-        'ISO_A2'
+        'iso2cd'
       ],
-      ISO_A2,
+      iso2cds,
       [
         'rgb',
         0,
