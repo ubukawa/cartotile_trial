@@ -5,11 +5,13 @@
 # install and test-run
 ```zsh
 git clone https://github.com/ubukawa/cartotile_trial
-cd cartotile_trial/iho_practice/8bit-who
+cd cartotile_trial/who_practice
 rake build
-rake host
 ```
 
 # information source
-I downloaded the CSV data via 'Download Map Data' of https://who.sprinklr.com/ to `src`.
-
+I downloaded the CSV data via 'Download Map Data' of https://who.sprinklr.com/ to `src`.  
+  
+  
+# test map
+https://ubukawa.github.io/cartituke_trial/who_practice/docs/index.html  
