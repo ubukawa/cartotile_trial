@@ -61,15 +61,15 @@ console.log(dailyData)
 
 let table = []
 let iso2cds = []
-for (let ISO_A2 in dailyData) {
-  iso2cds.push(ISO_A2)
+for (let iso2cd in dailyData) {
+  iso2cds.push(iso2cd)
   const g = 
-    dailyData[ISO_A2][TYPE] / 
+    dailyData[iso2cd][TYPE] / 
     max[TYPE]
   if (table[g]) {
-    table[g].push(ISO_A2)
+    table[g].push(iso2cd.toUpperCase())
   } else {
-    table[g] = [ISO_A2]
+    table[g] = [iso2cd.toUpperCase()]
   }
 }
 let fillExpression = [
@@ -107,7 +107,7 @@ let match1 = [
   ]
 ]
 let match2 = [
-  'ISO_A2',
+  'match',
   [
     'get',
     'ISO_A2'
@@ -120,10 +120,10 @@ let match3 = [
     'ISO_A2'
   ]
 ]
-for (let ISO_A2 in dailyData) {
-  match1.push(ISO_A2)
-  match1.push(dailyData[ISO_A2]['confirmed'].toString())
-  match2.push(ISO_A2)
+for (let iso2cd in dailyData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(dailyData[iso2cd]['confirmed'].toString())
+  match2.push(iso2cd.toUpperCase())
   match2.push([
     'concat',
     [
@@ -131,9 +131,9 @@ for (let ISO_A2 in dailyData) {
       'ISO_A3'
     ],
     ': ',
-    dailyData[ISO_A2][TYPE]
+    dailyData[iso2cd][TYPE]
   ])
-  match3.push(ISO_A2)
+  match3.push(iso2cd.toUpperCase())
   match3.push([
     'concat',
     [
@@ -141,7 +141,7 @@ for (let ISO_A2 in dailyData) {
       'NAME'
     ],
     ': ',
-    dailyData[ISO_A2][TYPE],
+    dailyData[iso2cd][TYPE],
     ' ',
     TYPE
   ])
@@ -169,9 +169,9 @@ const fillExtrusionHeight = [
     'ISO_A2'
   ]
 ]
-for (let ISO_A2 in dailyData) {
-  fillExtrusionHeight.push([ISO_A2])
-  fillExtrusionHeight.push(dailyData[ISO_A2][TYPE] * 100)
+for (let iso2cd in dailyData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(dailyData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
 console.log(fillExtrusionHeight)
