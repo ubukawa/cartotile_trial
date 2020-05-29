@@ -169,8 +169,8 @@ const fillExtrusionHeight = [
     'ISO_A2'
   ]
 ]
-for (let ISO_A2 in dailyData) {
-  fillExtrusionHeight.push(iso2cd.toUpperCase())
+for (let iso2cd in dailyData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
   fillExtrusionHeight.push(dailyData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
