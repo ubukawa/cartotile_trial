@@ -12,6 +12,8 @@ body { margin: 0; top: 0; bottom: 0; width: 100%; }
 <script src="mapbox-gl.js"></script>
 </head>
 <body>
+<h1>test text</h1>
+<p>I just insert some text in the begining of the body.</p>
 <div id="map"></div>
 <script type="module">
 const data = {
@@ -93537,7 +93539,7 @@ const fillExtrusionHeight = [
   ]
 ]
 for (let iso2cd in dailyData) {
-  fillExtrusionHeight.push(iso2cd.toUpperCase())
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
   fillExtrusionHeight.push(dailyData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
