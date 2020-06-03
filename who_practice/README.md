@@ -14,4 +14,4 @@ I downloaded the CSV data via 'Download Map Data' of https://who.sprinklr.com/ t
   
   
 # test map
-https://ubukawa.github.io/cartituke_trial/who_practice/docs/index.html  
+https://ubukawa.github.io/cartotile_trial/who_practice/docs/index.html  
