@@ -59,6 +59,7 @@ const TYPE = 'confirmed'
 const dailyData = data[DATE]
 console.log(dailyData)
 
+let ISO_A2
 let table = []
 let iso2cds = []
 for (let iso2cd in dailyData) {
