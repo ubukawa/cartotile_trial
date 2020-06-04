@@ -1,0 +1,2 @@
+(with comand prompt)
+Rscript test_script.r > output.out
