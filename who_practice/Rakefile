@@ -6,4 +6,5 @@ end
 desc 'build the site'
 task :build do
   sh "ruby build.rb src/WHO-COVID-19-global-data.csv > docs/index.html"
+  sh "ruby build_r.rb src/WHO-COVID-19-global-data.csv > docs/index_r.html"
 end
