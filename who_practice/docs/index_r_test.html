@@ -93471,32 +93471,32 @@ let match1 = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'MAPLAB'
   ]
 ]
 let match2 = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'MAPLAB'
   ]
 ]
 let match3 = [
   'match',
   [
     'get',
-    'ISO_A2'
+    'MAPLAB'
   ]
 ]
 for (let iso2cd in dailyData) {
-  match1.push(iso2cd.toUpperCase())
+  match1.push(name)
   match1.push(dailyData[iso2cd]['confirmed'].toString())
-  match2.push(iso2cd.toUpperCase())
+  match2.push(name)
   match2.push([
     'concat',
     [
       'get',
-      'ISO_A3'
+      'name'
     ],
     ': ',
     dailyData[iso2cd][TYPE]
@@ -93506,7 +93506,7 @@ for (let iso2cd in dailyData) {
     'concat',
     [
       'get',
-      'NAME'
+      'name'
     ],
     ': ',
     dailyData[iso2cd][TYPE],
@@ -93524,9 +93524,9 @@ const textFieldExpression = [
     'zoom'
   ],
   match1,
-  2,
+  1,
   match2,
-  4,
+  2,
   match3
 ]
 

@@ -1,0 +1,244 @@
+NUM_id,GeoAreaCode,ISO3CD,ISO2CD,ref-name
+1,533,ABW,AW,Aruba
+2,4,AFG,AF,Afghanistan
+3,24,AGO,AO,Angola
+4,660,AIA,AI,Anguilla
+5,248,ALA,AX,?àland Islands
+6,8,ALB,AL,Albania
+7,20,AND,AD,Andorra
+9,784,ARE,AE,United Arab Emirates
+10,32,ARG,AR,Argentina
+11,51,ARM,AM,Armenia
+12,16,ASM,AS,American Samoa
+14,260,ATF,TF,French Southern Territories
+15,28,ATG,AG,Antigua and Barbuda
+16,36,AUS,AU,Australia
+17,40,AUT,AT,Austria
+18,31,AZE,AZ,Azerbaijan
+19,108,BDI,BI,Burundi
+20,56,BEL,BE,Belgium
+21,204,BEN,BJ,Benin
+22,535,BES,BQ,Bonaire
+23,854,BFA,BF,Burkina Faso
+24,50,BGD,BD,Bangladesh
+25,100,BGR,BG,Bulgaria
+26,48,BHR,BH,Bahrain
+27,44,BHS,BS,Bahamas
+28,70,BIH,BA,Bosnia and Herzegovina
+29,112,BLR,BY,Belarus
+30,84,BLZ,BZ,Belize
+31,60,BMU,BM,Bermuda
+32,68,BOL,BO,Bolivia (Plurinational State of)
+33,76,BRA,BR,Brazil
+34,52,BRB,BB,Barbados
+35,96,BRN,BN,Brunei Darussalam
+36,64,BTN,BT,Bhutan
+38,72,BWA,BW,Botswana
+39,140,CAF,CF,Central African Republic
+40,124,CAN,CA,Canada
+41,166,CCK,CC,Cocos (Keeling) Islands
+42,756,CHE,CH,Switzerland
+43,152,CHL,CL,Chile
+44,156,CHN,CN,China
+45,384,CIV,CI,C??te d'Ivoire
+46,120,CMR,CM,Cameroon
+47,180,COD,CD,Democratic Republic of the Congo
+48,178,COG,CG,Congo
+49,184,COK,CK,Cook Islands
+50,170,COL,CO,Colombia
+51,174,COM,KM,Comoros
+52,132,CPV,CV,Cabo Verde
+53,188,CRI,CR,Costa Rica
+54,192,CUB,CU,Cuba
+55,531,CUW,CW,Cura?ºao
+56,162,CXR,CX,Christmas Island
+57,136,CYM,KY,Cayman Islands
+58,196,CYP,CY,Cyprus
+59,203,CZE,CZ,Czechia
+60,276,DEU,DE,Germany
+61,262,DJI,DJ,Djibouti
+62,212,DMA,DM,Dominica
+63,208,DNK,DK,Denmark
+64,214,DOM,DO,Dominican Republic
+65,12,DZA,DZ,Algeria
+66,218,ECU,EC,Ecuador
+67,818,EGY,EG,Egypt
+68,232,ERI,ER,Eritrea
+69,732,ESH,EH,Western Sahara
+70,724,ESP,ES,Spain
+71,233,EST,EE,Estonia
+72,231,ETH,ET,Ethiopia
+73,246,FIN,FI,Finland
+74,242,FJI,FJ,Fiji
+75,238,FLK,FK,Falkland Islands (Malvinas)
+76,250,FRA,FR,France
+77,234,FRO,FO,Faroe Islands
+78,583,FSM,FM,Micronesia (Federated States of)
+79,266,GAB,GA,Gabon
+80,826,GBR,GB,United Kingdom of Great Britain & Northern Ireland
+81,268,GEO,GE,Georgia
+82,831,GGY,GG,Guernsey
+83,288,GHA,GH,Ghana
+84,292,GIB,GI,Gibraltar
+85,324,GIN,GN,Guinea
+86,312,GLP,GP,Guadeloupe
+87,270,GMB,GM,Gambia
+88,624,GNB,GW,Guinea-Bissau
+89,226,GNQ,GQ,Equatorial Guinea
+90,300,GRC,GR,Greece
+91,308,GRD,GD,Grenada
+92,304,GRL,GL,Greenland
+93,320,GTM,GT,Guatemala
+94,254,GUF,GF,French Guiana
+95,316,GUM,GU,Guam
+96,328,GUY,GY,Guyana
+97,344,HKG,HK,Hong Kong
+98,334,HMD,HM,Heard Island and McDonald Islands
+99,340,HND,HN,Honduras
+100,191,HRV,HR,Croatia
+101,332,HTI,HT,Haiti
+102,348,HUN,HU,Hungary
+103,360,IDN,ID,Indonesia
+104,833,IMN,IM,Isle of Man
+105,356,IND,IN,India
+107,372,IRL,IE,Ireland
+108,364,IRN,IR,Iran (Islamic Republic of)
+109,368,IRQ,IQ,Iraq
+110,352,ISL,IS,Iceland
+111,376,ISR,IL,Israel
+112,380,ITA,IT,Italy
+113,388,JAM,JM,Jamaica
+114,832,JEY,JE,Jersey
+115,400,JOR,JO,Jordan
+116,392,JPN,JP,Japan
+117,398,KAZ,KZ,Kazakhstan
+118,404,KEN,KE,Kenya
+119,417,KGZ,KG,Kyrgyzstan
+120,116,KHM,KH,Cambodia
+121,296,KIR,KI,Kiribati
+122,659,KNA,KN,Saint Kitts and Nevis
+123,410,KOR,KR,Republic of Korea
+124,414,KWT,KW,Kuwait
+125,418,LAO,LA,Lao People's Democratic Republic
+126,422,LBN,LB,Lebanon
+127,430,LBR,LR,Liberia
+128,434,LBY,LY,Libya
+129,662,LCA,LC,Saint Lucia
+130,438,LIE,LI,Liechtenstein
+131,144,LKA,LK,Sri Lanka
+132,426,LSO,LS,Lesotho
+133,440,LTU,LT,Lithuania
+134,442,LUX,LU,Luxembourg
+135,428,LVA,LV,Latvia
+136,446,MAC,MO,Macao
+137,663,MAF,MF,Saint Martin
+138,504,MAR,MA,Morocco
+139,492,MCO,MC,Monaco
+140,498,MDA,MD,Republic of Moldova
+141,450,MDG,MG,Madagascar
+142,462,MDV,MV,Maldives
+143,484,MEX,MX,Mexico
+144,584,MHL,MH,Marshall Islands
+145,807,MKD,MK,The former Yugoslav Republic of Macedonia
+146,466,MLI,ML,Mali
+147,470,MLT,MT,Malta
+148,104,MMR,MM,Myanmar
+149,499,MNE,ME,Montenegro
+150,496,MNG,MN,Mongolia
+151,580,MNP,MP,Northern Mariana Islands
+152,508,MOZ,MZ,Mozambique
+153,478,MRT,MR,Mauritania
+154,500,MSR,MS,Montserrat
+155,474,MTQ,MQ,Martinique
+156,480,MUS,MU,Mauritius
+157,454,MWI,MW,Malawi
+158,458,MYS,NY,Malaysia
+159,175,MYT,YT,Mayotte
+160,516,NAM,NA,Namibia
+161,540,NCL,NC,New Caledonia
+162,562,NER,NE,Niger
+163,574,NFK,NF,Norfolk Island
+164,566,NGA,NG,Nigeria
+165,558,NIC,NI,Nicaragua
+166,570,NIU,NU,Niue
+167,528,NLD,NL,Netherlands
+168,578,NOR,NO,Norway
+169,524,NPL,NP,Nepal
+170,520,NRU,NR,Nauru
+171,554,NZL,NZ,New Zealand
+172,512,OMN,OM,Oman
+173,586,PAK,PK,Pakistan
+174,591,PAN,PA,Panama
+175,612,PCN,PN,Pitcairn
+176,604,PER,PE,Peru
+177,608,PHL,PH,Philippines
+178,585,PLW,PW,Palau
+179,598,PNG,PG,Papua New Guinea
+180,616,POL,PL,Poland
+181,630,PRI,PR,Puerto Rico
+182,408,PRK,KP,Democratic People's Republic of Korea
+183,620,PRT,PT,Portugal
+184,600,PRY,PY,Paraguay
+185,275,PSE,PS,State of Palestine
+186,258,PYF,PF,French Polynesia
+187,634,QAT,QA,Qatar
+188,638,REU,RE,R??union
+189,642,ROU,RO,Romania
+190,643,RUS,RU,Russian Federation
+191,646,RWA,RW,Rwanda
+192,682,SAU,SA,Saudi Arabia
+193,729,SDN,SD,Sudan
+194,686,SEN,SN,Senegal
+195,702,SGP,SG,Singapore
+196,239,SGS,GS,South Georgia and the South Sandwich Islands
+197,654,SHN,SH,Saint Helena
+198,744,SJM,SJ,Svalbard and Jan Mayen Islands
+199,90,SLB,SB,Solomon Islands
+200,694,SLE,SL,Sierra Leone
+201,222,SLV,SV,El Salvador
+202,674,SMR,SM,San Marino
+203,706,SOM,SO,Somalia
+204,666,SPM,PM,Saint Pierre et Miquelon
+205,688,SRB,RS,Serbia
+206,728,SSD,SS,South Sudan
+207,678,STP,ST,Sao Tome and Principe
+208,740,SUR,SR,Suriname
+209,703,SVK,SK,Slovakia
+210,705,SVN,SI,Slovenia
+211,752,SWE,SE,Sweden
+212,748,SWZ,SZ,Eswatini
+213,534,SXM,SX,Sint Maarten
+214,690,SYC,SC,Seychelles
+215,760,SYR,SY,Syrian Arab Republic
+216,796,TCA,TC,Turks and Caicos Islands
+217,148,TCD,TD,Chad
+218,768,TGO,TG,Togo
+219,764,THA,TH,Thailand
+220,762,TJK,TJ,Tajikistan
+221,772,TKL,TK,Tokelau
+222,795,TKM,TM,Turkmenistan
+223,626,TLS,TL,Timor-Leste
+224,776,TON,TO,Tonga
+225,780,TTO,TT,Trinidad and Tobago
+226,788,TUN,TN,Tunisia
+227,792,TUR,TR,Turkey
+228,798,TUV,TV,Tuvalu
+230,834,TZA,TZ,United Republic of Tanzania
+231,800,UGA,UG,Uganda
+232,804,UKR,UA,Ukraine
+234,858,URY,UY,Uruguay
+235,840,USA,US,United States of America
+236,860,UZB,UZ,Uzbekistan
+237,336,VAT,VA,Holy See
+238,670,VCT,VC,Saint Vincent and the Grenadines
+239,862,VEN,VE,Venezuela
+240,92,VGB,VG,British Virgin Islands
+241,850,VIR,VI,United States Virgin Islands
+242,704,VNM,VN,Viet Nam
+243,548,VUT,VU,Vanuatu
+244,876,WLF,WF,Wallis and Futuna
+245,882,WSM,WS,Samoa
+246,887,YEM,YE,Yemen
+247,710,ZAF,ZA,South Africa
+248,894,ZMB,ZM,Zambia
+249,716,ZWE,ZW,Zimbabwe
