@@ -1,2 +1,6 @@
-(with comand prompt)
+#######################################
+#Please store the source data in src folder.
+#Please prepare a folder for graph.
+######################################
+
 Rscript test_script.r > output.out

@@ -1,0 +1,1371 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "3.2.1": {
+    "af": {
+      "names": "AFG",
+      "values": 47,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ao": {
+      "names": "AGO",
+      "values": 51,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "al": {
+      "names": "ALB",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ad": {
+      "names": "AND",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ae": {
+      "names": "ARE",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ar": {
+      "names": "ARG",
+      "values": 8,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "am": {
+      "names": "ARM",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ag": {
+      "names": "ATG",
+      "values": 5,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "au": {
+      "names": "AUS",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "at": {
+      "names": "AUT",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "az": {
+      "names": "AZE",
+      "values": 19,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bi": {
+      "names": "BDI",
+      "values": 41,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "be": {
+      "names": "BEL",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bj": {
+      "names": "BEN",
+      "values": 60,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bf": {
+      "names": "BFA",
+      "values": 49,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bd": {
+      "names": "BGD",
+      "values": 25,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bg": {
+      "names": "BGR",
+      "values": 5,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bh": {
+      "names": "BHR",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bs": {
+      "names": "BHS",
+      "values": 8,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ba": {
+      "names": "BIH",
+      "values": 5,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "by": {
+      "names": "BLR",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bz": {
+      "names": "BLZ",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bo": {
+      "names": "BOL",
+      "values": 21,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "br": {
+      "names": "BRA",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bb": {
+      "names": "BRB",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bn": {
+      "names": "BRN",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bt": {
+      "names": "BTN",
+      "values": 24,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "bw": {
+      "names": "BWA",
+      "values": 30,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cf": {
+      "names": "CAF",
+      "values": 84,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ca": {
+      "names": "CAN",
+      "values": 4,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ch": {
+      "names": "CHE",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cl": {
+      "names": "CHL",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cn": {
+      "names": "CHN",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ci": {
+      "names": "CIV",
+      "values": 59,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cm": {
+      "names": "CMR",
+      "values": 50,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cd": {
+      "names": "COD",
+      "values": 68,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cg": {
+      "names": "COG",
+      "values": 36,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ck": {
+      "names": "COK",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "co": {
+      "names": "COL",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "km": {
+      "names": "COM",
+      "values": 51,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cv": {
+      "names": "CPV",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cr": {
+      "names": "CRI",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cu": {
+      "names": "CUB",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cy": {
+      "names": "CYP",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "cz": {
+      "names": "CZE",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "de": {
+      "names": "DEU",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "dj": {
+      "names": "DJI",
+      "values": 49,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "dm": {
+      "names": "DMA",
+      "values": 32,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "dk": {
+      "names": "DNK",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "do": {
+      "names": "DOM",
+      "values": 24,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "dz": {
+      "names": "DZA",
+      "values": 20,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ec": {
+      "names": "ECU",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "eg": {
+      "names": "EGY",
+      "values": 18,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "er": {
+      "names": "ERI",
+      "values": 31,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "es": {
+      "names": "ESP",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ee": {
+      "names": "EST",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "et": {
+      "names": "ETH",
+      "values": 39,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "fi": {
+      "names": "FIN",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "fj": {
+      "names": "FJI",
+      "values": 21,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "fr": {
+      "names": "FRA",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "fm": {
+      "names": "FSM",
+      "values": 25,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ga": {
+      "names": "GAB",
+      "values": 32,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gb": {
+      "names": "GBR",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ge": {
+      "names": "GEO",
+      "values": 8,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gh": {
+      "names": "GHA",
+      "values": 34,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gn": {
+      "names": "GIN",
+      "values": 64,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gm": {
+      "names": "GMB",
+      "values": 39,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gw": {
+      "names": "GNB",
+      "values": 54,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gq": {
+      "names": "GNQ",
+      "values": 62,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gr": {
+      "names": "GRC",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gd": {
+      "names": "GRD",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gt": {
+      "names": "GTM",
+      "values": 22,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "gy": {
+      "names": "GUY",
+      "values": 25,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "hn": {
+      "names": "HND",
+      "values": 15,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "hr": {
+      "names": "HRV",
+      "values": 4,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ht": {
+      "names": "HTI",
+      "values": 49,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "hu": {
+      "names": "HUN",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "id": {
+      "names": "IDN",
+      "values": 21,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "in": {
+      "names": "IND",
+      "values": 29,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ie": {
+      "names": "IRL",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ir": {
+      "names": "IRN",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "iq": {
+      "names": "IRQ",
+      "values": 22,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "is": {
+      "names": "ISL",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "il": {
+      "names": "ISR",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "it": {
+      "names": "ITA",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "jm": {
+      "names": "JAM",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "jo": {
+      "names": "JOR",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "jp": {
+      "names": "JPN",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kz": {
+      "names": "KAZ",
+      "values": 8,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ke": {
+      "names": "KEN",
+      "values": 30,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kg": {
+      "names": "KGZ",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kh": {
+      "names": "KHM",
+      "values": 24,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ki": {
+      "names": "KIR",
+      "values": 41,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kn": {
+      "names": "KNA",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kr": {
+      "names": "KOR",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kw": {
+      "names": "KWT",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "la": {
+      "names": "LAO",
+      "values": 37,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lb": {
+      "names": "LBN",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lr": {
+      "names": "LBR",
+      "values": 53,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ly": {
+      "names": "LBY",
+      "values": 10,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lc": {
+      "names": "LCA",
+      "values": 14,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lk": {
+      "names": "LKA",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ls": {
+      "names": "LSO",
+      "values": 65,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lt": {
+      "names": "LTU",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lu": {
+      "names": "LUX",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "lv": {
+      "names": "LVA",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ma": {
+      "names": "MAR",
+      "values": 19,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mc": {
+      "names": "MCO",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "md": {
+      "names": "MDA",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mg": {
+      "names": "MDG",
+      "values": 38,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mv": {
+      "names": "MDV",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mx": {
+      "names": "MEX",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mh": {
+      "names": "MHL",
+      "values": 27,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mk": {
+      "names": "MKD",
+      "values": 8,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ml": {
+      "names": "MLI",
+      "values": 62,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mt": {
+      "names": "MLT",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mm": {
+      "names": "MMR",
+      "values": 36,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "me": {
+      "names": "MNE",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mn": {
+      "names": "MNG",
+      "values": 14,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mz": {
+      "names": "MOZ",
+      "values": 54,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mr": {
+      "names": "MRT",
+      "values": 51,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mu": {
+      "names": "MUS",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "mw": {
+      "names": "MWI",
+      "values": 35,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ny": {
+      "names": "MYS",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "na": {
+      "names": "NAM",
+      "values": 29,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ne": {
+      "names": "NER",
+      "values": 48,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ng": {
+      "names": "NGA",
+      "values": 75,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ni": {
+      "names": "NIC",
+      "values": 15,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "nu": {
+      "names": "NIU",
+      "values": 20,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "nl": {
+      "names": "NLD",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "no": {
+      "names": "NOR",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "np": {
+      "names": "NPL",
+      "values": 26,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "nr": {
+      "names": "NRU",
+      "values": 26,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "nz": {
+      "names": "NZL",
+      "values": 4,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "om": {
+      "names": "OMN",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pk": {
+      "names": "PAK",
+      "values": 57,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pa": {
+      "names": "PAN",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pe": {
+      "names": "PER",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ph": {
+      "names": "PHL",
+      "values": 22,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pw": {
+      "names": "PLW",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pg": {
+      "names": "PNG",
+      "values": 38,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pl": {
+      "names": "POL",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "kp": {
+      "names": "PRK",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "pt": {
+      "names": "PRT",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "py": {
+      "names": "PRY",
+      "values": 17,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ps": {
+      "names": "PSE",
+      "values": 17,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "qa": {
+      "names": "QAT",
+      "values": 5,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ro": {
+      "names": "ROU",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ru": {
+      "names": "RUS",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "rw": {
+      "names": "RWA",
+      "values": 27,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sa": {
+      "names": "SAU",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sd": {
+      "names": "SDN",
+      "values": 42,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sn": {
+      "names": "SEN",
+      "values": 31,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sg": {
+      "names": "SGP",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sb": {
+      "names": "SLB",
+      "values": 17,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sl": {
+      "names": "SLE",
+      "values": 78,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sv": {
+      "names": "SLV",
+      "values": 11,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sm": {
+      "names": "SMR",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "so": {
+      "names": "SOM",
+      "values": 76,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "rs": {
+      "names": "SRB",
+      "values": 4,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ss": {
+      "names": "SSD",
+      "values": 63,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "st": {
+      "names": "STP",
+      "values": 24,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sr": {
+      "names": "SUR",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sk": {
+      "names": "SVK",
+      "values": 4,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "si": {
+      "names": "SVN",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "se": {
+      "names": "SWE",
+      "values": 2,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sz": {
+      "names": "SWZ",
+      "values": 43,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sc": {
+      "names": "SYC",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "sy": {
+      "names": "SYR",
+      "values": 14,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "td": {
+      "names": "TCD",
+      "values": 71,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tg": {
+      "names": "TGO",
+      "values": 47,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "th": {
+      "names": "THA",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tj": {
+      "names": "TJK",
+      "values": 30,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tm": {
+      "names": "TKM",
+      "values": 39,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tl": {
+      "names": "TLS",
+      "values": 39,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "to": {
+      "names": "TON",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tt": {
+      "names": "TTO",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tn": {
+      "names": "TUN",
+      "values": 14,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tr": {
+      "names": "TUR",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tv": {
+      "names": "TUV",
+      "values": 20,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "tz": {
+      "names": "TZA",
+      "values": 37,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ug": {
+      "names": "UGA",
+      "values": 33,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ua": {
+      "names": "UKR",
+      "values": 7,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "uy": {
+      "names": "URY",
+      "values": 6,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "us": {
+      "names": "USA",
+      "values": 5,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "uz": {
+      "names": "UZB",
+      "values": 19,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "vc": {
+      "names": "VCT",
+      "values": 14,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ve": {
+      "names": "VEN",
+      "values": 21,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "vn": {
+      "names": "VNM",
+      "values": 16,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "vu": {
+      "names": "VUT",
+      "values": 22,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ws": {
+      "names": "WSM",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "ye": {
+      "names": "YEM",
+      "values": 42,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "za": {
+      "names": "ZAF",
+      "values": 28,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "zm": {
+      "names": "ZMB",
+      "values": 40,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    },
+    "zw": {
+      "names": "ZWE",
+      "values": 33,
+      "years": 2018,
+      "unit": "PER_1000_LIVE_BIRTHS"
+    }
+  }
+}
+const max = {
+  "values": 84
+} 
+
+const INDEX = '3.2.1'
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let ISO_A2
+let table = []
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso2cds.push(iso2cd)
+  const g = 
+    indexData[iso2cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso2cd.toUpperCase())
+  } else {
+    table[g] = [iso2cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(iso2cd.toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'ISO_A3'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE]
+  ])
+  match3.push(iso2cd.toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'NAME'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    TYPE
+  ])
+}
+match1.push('?')
+match2.push('?')
+match3.push('?')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+const fillExtrusionHeight = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(indexData[iso2cd][TYPE] * 100)
+}
+fillExtrusionHeight.push(0)
+console.log(fillExtrusionHeight)
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'ISO_A2'
+      ],
+      ISO_A2,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+  map.addLayer({
+    id: 'bnda-extrusion',
+    source: 'v',
+    'source-layer': 'bnda',
+    type: 'fill-extrusion',
+    paint: {
+      'fill-extrusion-height': fillExtrusionHeight,
+      'fill-extrusion-color': fillExpression,
+      'fill-extrusion-opacity': 0.2
+    } 
+  })
+})
+</script>
+</body>
+</html>

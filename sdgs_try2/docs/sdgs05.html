@@ -1,0 +1,1359 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "5.5.1": {
+    "af": {
+      "names": "AFG",
+      "values": 67,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ao": {
+      "names": "AGO",
+      "values": 66,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "al": {
+      "names": "ALB",
+      "values": 36,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ad": {
+      "names": "AND",
+      "values": 13,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ae": {
+      "names": "ARE",
+      "values": 20,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ar": {
+      "names": "ARG",
+      "values": 105,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "am": {
+      "names": "ARM",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ag": {
+      "names": "ATG",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "au": {
+      "names": "AUS",
+      "values": 46,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "at": {
+      "names": "AUT",
+      "values": 72,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "az": {
+      "names": "AZE",
+      "values": 20,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bi": {
+      "names": "BDI",
+      "values": 44,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "be": {
+      "names": "BEL",
+      "values": 61,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bj": {
+      "names": "BEN",
+      "values": 6,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bf": {
+      "names": "BFA",
+      "values": 17,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bd": {
+      "names": "BGD",
+      "values": 73,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bg": {
+      "names": "BGR",
+      "values": 64,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bh": {
+      "names": "BHR",
+      "values": 6,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bs": {
+      "names": "BHS",
+      "values": 5,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ba": {
+      "names": "BIH",
+      "values": 9,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "by": {
+      "names": "BLR",
+      "values": 44,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bz": {
+      "names": "BLZ",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bo": {
+      "names": "BOL",
+      "values": 69,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "br": {
+      "names": "BRA",
+      "values": 75,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bb": {
+      "names": "BRB",
+      "values": 6,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bn": {
+      "names": "BRN",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bt": {
+      "names": "BTN",
+      "values": 7,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "bw": {
+      "names": "BWA",
+      "values": 7,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cf": {
+      "names": "CAF",
+      "values": 12,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ca": {
+      "names": "CAN",
+      "values": 98,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ch": {
+      "names": "CHE",
+      "values": 83,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cl": {
+      "names": "CHL",
+      "values": 35,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cn": {
+      "names": "CHN",
+      "values": 742,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ci": {
+      "names": "CIV",
+      "values": 30,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cm": {
+      "names": "CMR",
+      "values": 56,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cd": {
+      "names": "COD",
+      "values": 64,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cg": {
+      "names": "COG",
+      "values": 17,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "co": {
+      "names": "COL",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "km": {
+      "names": "COM",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cv": {
+      "names": "CPV",
+      "values": 18,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cr": {
+      "names": "CRI",
+      "values": 26,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cu": {
+      "names": "CUB",
+      "values": 322,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cy": {
+      "names": "CYP",
+      "values": 11,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "cz": {
+      "names": "CZE",
+      "values": 45,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "de": {
+      "names": "DEU",
+      "values": 221,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "dj": {
+      "names": "DJI",
+      "values": 17,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "dm": {
+      "names": "DMA",
+      "values": 8,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "dk": {
+      "names": "DNK",
+      "values": 71,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "do": {
+      "names": "DOM",
+      "values": 53,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "dz": {
+      "names": "DZA",
+      "values": 119,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ec": {
+      "names": "ECU",
+      "values": 54,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "eg": {
+      "names": "EGY",
+      "values": 90,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "er": {
+      "names": "ERI",
+      "values": 33,
+      "years": 2019,
+      "unit": "NUMBER"
+    },
+    "es": {
+      "names": "ESP",
+      "values": 154,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ee": {
+      "names": "EST",
+      "values": 29,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "et": {
+      "names": "ETH",
+      "values": 212,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "fi": {
+      "names": "FIN",
+      "values": 92,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "fj": {
+      "names": "FJI",
+      "values": 10,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "fr": {
+      "names": "FRA",
+      "values": 228,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "fm": {
+      "names": "FSM",
+      "values": 0,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ga": {
+      "names": "GAB",
+      "values": 21,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gb": {
+      "names": "GBR",
+      "values": 220,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ge": {
+      "names": "GEO",
+      "values": 21,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gh": {
+      "names": "GHA",
+      "values": 36,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gn": {
+      "names": "GIN",
+      "values": 26,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gm": {
+      "names": "GMB",
+      "values": 5,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gw": {
+      "names": "GNB",
+      "values": 14,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gq": {
+      "names": "GNQ",
+      "values": 21,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gr": {
+      "names": "GRC",
+      "values": 62,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gd": {
+      "names": "GRD",
+      "values": 7,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gt": {
+      "names": "GTM",
+      "values": 30,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "gy": {
+      "names": "GUY",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "hn": {
+      "names": "HND",
+      "values": 27,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "hr": {
+      "names": "HRV",
+      "values": 29,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ht": {
+      "names": "HTI",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "hu": {
+      "names": "HUN",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "id": {
+      "names": "IDN",
+      "values": 117,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "in": {
+      "names": "IND",
+      "values": 78,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ie": {
+      "names": "IRL",
+      "values": 33,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ir": {
+      "names": "IRN",
+      "values": 17,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "iq": {
+      "names": "IRQ",
+      "values": 87,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "is": {
+      "names": "ISL",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "il": {
+      "names": "ISR",
+      "values": 28,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "it": {
+      "names": "ITA",
+      "values": 225,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "jm": {
+      "names": "JAM",
+      "values": 11,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "jo": {
+      "names": "JOR",
+      "values": 20,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "jp": {
+      "names": "JPN",
+      "values": 46,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kz": {
+      "names": "KAZ",
+      "values": 29,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ke": {
+      "names": "KEN",
+      "values": 76,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kg": {
+      "names": "KGZ",
+      "values": 23,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kh": {
+      "names": "KHM",
+      "values": 25,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ki": {
+      "names": "KIR",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kn": {
+      "names": "KNA",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kr": {
+      "names": "KOR",
+      "values": 51,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kw": {
+      "names": "KWT",
+      "values": 4,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "la": {
+      "names": "LAO",
+      "values": 41,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lb": {
+      "names": "LBN",
+      "values": 6,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lr": {
+      "names": "LBR",
+      "values": 9,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ly": {
+      "names": "LBY",
+      "values": 30,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lc": {
+      "names": "LCA",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "li": {
+      "names": "LIE",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lk": {
+      "names": "LKA",
+      "values": 12,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ls": {
+      "names": "LSO",
+      "values": 28,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lt": {
+      "names": "LTU",
+      "values": 34,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lu": {
+      "names": "LUX",
+      "values": 18,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "lv": {
+      "names": "LVA",
+      "values": 30,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ma": {
+      "names": "MAR",
+      "values": 81,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mc": {
+      "names": "MCO",
+      "values": 8,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "md": {
+      "names": "MDA",
+      "values": 25,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mg": {
+      "names": "MDG",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mv": {
+      "names": "MDV",
+      "values": 4,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mx": {
+      "names": "MEX",
+      "values": 241,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mh": {
+      "names": "MHL",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mk": {
+      "names": "MKD",
+      "values": 48,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ml": {
+      "names": "MLI",
+      "values": 14,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mt": {
+      "names": "MLT",
+      "values": 9,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mm": {
+      "names": "MMR",
+      "values": 48,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "me": {
+      "names": "MNE",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mn": {
+      "names": "MNG",
+      "values": 13,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mz": {
+      "names": "MOZ",
+      "values": 103,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mr": {
+      "names": "MRT",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mu": {
+      "names": "MUS",
+      "values": 14,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "mw": {
+      "names": "MWI",
+      "values": 44,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ny": {
+      "names": "MYS",
+      "values": 32,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "na": {
+      "names": "NAM",
+      "values": 41,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ne": {
+      "names": "NER",
+      "values": 29,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ng": {
+      "names": "NGA",
+      "values": 12,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ni": {
+      "names": "NIC",
+      "values": 43,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "nl": {
+      "names": "NLD",
+      "values": 50,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "no": {
+      "names": "NOR",
+      "values": 70,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "np": {
+      "names": "NPL",
+      "values": 90,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "nr": {
+      "names": "NRU",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "nz": {
+      "names": "NZL",
+      "values": 49,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "om": {
+      "names": "OMN",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pk": {
+      "names": "PAK",
+      "values": 69,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pa": {
+      "names": "PAN",
+      "values": 16,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pe": {
+      "names": "PER",
+      "values": 39,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ph": {
+      "names": "PHL",
+      "values": 85,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pw": {
+      "names": "PLW",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pg": {
+      "names": "PNG",
+      "values": 0,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pl": {
+      "names": "POL",
+      "values": 132,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "kp": {
+      "names": "PRK",
+      "values": 121,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "pt": {
+      "names": "PRT",
+      "values": 92,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "py": {
+      "names": "PRY",
+      "values": 13,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "qa": {
+      "names": "QAT",
+      "values": 4,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ro": {
+      "names": "ROU",
+      "values": 72,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ru": {
+      "names": "RUS",
+      "values": 71,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "rw": {
+      "names": "RWA",
+      "values": 49,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sa": {
+      "names": "SAU",
+      "values": 30,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sd": {
+      "names": "SDN",
+      "values": 133,
+      "years": 2019,
+      "unit": "NUMBER"
+    },
+    "sn": {
+      "names": "SEN",
+      "values": 71,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sg": {
+      "names": "SGP",
+      "values": 24,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sb": {
+      "names": "SLB",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sl": {
+      "names": "SLE",
+      "values": 18,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sv": {
+      "names": "SLV",
+      "values": 28,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sm": {
+      "names": "SMR",
+      "values": 19,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "so": {
+      "names": "SOM",
+      "values": 67,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "rs": {
+      "names": "SRB",
+      "values": 93,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ss": {
+      "names": "SSD",
+      "values": 109,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "st": {
+      "names": "STP",
+      "values": 8,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sr": {
+      "names": "SUR",
+      "values": 16,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sk": {
+      "names": "SVK",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "si": {
+      "names": "SVN",
+      "values": 25,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "se": {
+      "names": "SWE",
+      "values": 164,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sz": {
+      "names": "SWZ",
+      "values": 7,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sc": {
+      "names": "SYC",
+      "values": 7,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "sy": {
+      "names": "SYR",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "td": {
+      "names": "TCD",
+      "values": 25,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tg": {
+      "names": "TGO",
+      "values": 17,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "th": {
+      "names": "THA",
+      "values": 81,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tj": {
+      "names": "TJK",
+      "values": 12,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tm": {
+      "names": "TKM",
+      "values": 31,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tl": {
+      "names": "TLS",
+      "values": 25,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "to": {
+      "names": "TON",
+      "values": 2,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tt": {
+      "names": "TTO",
+      "values": 13,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tn": {
+      "names": "TUN",
+      "values": 54,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tr": {
+      "names": "TUR",
+      "values": 102,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tv": {
+      "names": "TUV",
+      "values": 1,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "tz": {
+      "names": "TZA",
+      "values": 145,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ug": {
+      "names": "UGA",
+      "values": 160,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ua": {
+      "names": "UKR",
+      "values": 88,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "uy": {
+      "names": "URY",
+      "values": 21,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "us": {
+      "names": "USA",
+      "values": 101,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "uz": {
+      "names": "UZB",
+      "values": 48,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "vc": {
+      "names": "VCT",
+      "values": 3,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ve": {
+      "names": "VEN",
+      "values": 37,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "vn": {
+      "names": "VNM",
+      "values": 132,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "vu": {
+      "names": "VUT",
+      "values": 0,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ws": {
+      "names": "WSM",
+      "values": 5,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "ye": {
+      "names": "YEM",
+      "values": 1,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "za": {
+      "names": "ZAF",
+      "values": 184,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "zm": {
+      "names": "ZMB",
+      "values": 28,
+      "years": 2020,
+      "unit": "NUMBER"
+    },
+    "zw": {
+      "names": "ZWE",
+      "values": 86,
+      "years": 2020,
+      "unit": "NUMBER"
+    }
+  }
+}
+const max = {
+  "values": 742
+} 
+
+const INDEX = '5.5.1'
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let ISO_A2
+let table = []
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso2cds.push(iso2cd)
+  const g = 
+    indexData[iso2cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso2cd.toUpperCase())
+  } else {
+    table[g] = [iso2cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(iso2cd.toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'ISO_A3'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE]
+  ])
+  match3.push(iso2cd.toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'NAME'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    TYPE
+  ])
+}
+match1.push('?')
+match2.push('?')
+match3.push('?')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+const fillExtrusionHeight = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(indexData[iso2cd][TYPE] * 100)
+}
+fillExtrusionHeight.push(0)
+console.log(fillExtrusionHeight)
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'ISO_A2'
+      ],
+      ISO_A2,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+  map.addLayer({
+    id: 'bnda-extrusion',
+    source: 'v',
+    'source-layer': 'bnda',
+    type: 'fill-extrusion',
+    paint: {
+      'fill-extrusion-height': fillExtrusionHeight,
+      'fill-extrusion-color': fillExpression,
+      'fill-extrusion-opacity': 0.2
+    } 
+  })
+})
+</script>
+</body>
+</html>

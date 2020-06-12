@@ -1,0 +1,1156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "1.1.1": {
+    "AGO": {
+      "names2": "AO",
+      "values": 48,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "ALB": {
+      "names2": "AL",
+      "values": 2,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "ARE": {
+      "names2": "AE",
+      "values": 0,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "ARG": {
+      "names2": "AR",
+      "values": 1,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "ARM": {
+      "names2": "AM",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "AUS": {
+      "names2": "AU",
+      "values": 1,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "AUT": {
+      "names2": "AT",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "AZE": {
+      "names2": "AZ",
+      "values": 0,
+      "years": 2005,
+      "unit": "PERCENT"
+    },
+    "BDI": {
+      "names2": "BI",
+      "values": 72,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "BEL": {
+      "names2": "BE",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "BEN": {
+      "names2": "BJ",
+      "values": 50,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "BFA": {
+      "names2": "BF",
+      "values": 44,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "BGD": {
+      "names2": "BD",
+      "values": 15,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "BGR": {
+      "names2": "BG",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "BIH": {
+      "names2": "BA",
+      "values": 0,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "BLR": {
+      "names2": "BY",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "BOL": {
+      "names2": "BO",
+      "values": 5,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "BRA": {
+      "names2": "BR",
+      "values": 4,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "BTN": {
+      "names2": "BT",
+      "values": 2,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "BWA": {
+      "names2": "BW",
+      "values": 16,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "CAF": {
+      "names2": "CF",
+      "values": 66,
+      "years": 2008,
+      "unit": "PERCENT"
+    },
+    "CAN": {
+      "names2": "CA",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "CHE": {
+      "names2": "CH",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "CHL": {
+      "names2": "CL",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "CHN": {
+      "names2": "CN",
+      "values": 1,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "CIV": {
+      "names2": "CI",
+      "values": 28,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "CMR": {
+      "names2": "CM",
+      "values": 24,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "COD": {
+      "names2": "CD",
+      "values": 77,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "COG": {
+      "names2": "CG",
+      "values": 37,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "COL": {
+      "names2": "CO",
+      "values": 4,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "COM": {
+      "names2": "KM",
+      "values": 18,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "CPV": {
+      "names2": "CV",
+      "values": 3,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "CRI": {
+      "names2": "CR",
+      "values": 1,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "CYP": {
+      "names2": "CY",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "CZE": {
+      "names2": "CZ",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "DEU": {
+      "names2": "DE",
+      "values": 0,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "DJI": {
+      "names2": "DJ",
+      "values": 17,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "DNK": {
+      "names2": "DK",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "DOM": {
+      "names2": "DO",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "DZA": {
+      "names2": "DZ",
+      "values": 1,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "ECU": {
+      "names2": "EC",
+      "values": 3,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "EGY": {
+      "names2": "EG",
+      "values": 3,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "ESP": {
+      "names2": "ES",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "EST": {
+      "names2": "EE",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "ETH": {
+      "names2": "ET",
+      "values": 31,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "FIN": {
+      "names2": "FI",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "FJI": {
+      "names2": "FJ",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "FRA": {
+      "names2": "FR",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "FSM": {
+      "names2": "FM",
+      "values": 15,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "GAB": {
+      "names2": "GA",
+      "values": 3,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "GBR": {
+      "names2": "GB",
+      "values": 0,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "GEO": {
+      "names2": "GE",
+      "values": 5,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "GHA": {
+      "names2": "GH",
+      "values": 13,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "GIN": {
+      "names2": "GN",
+      "values": 35,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "GMB": {
+      "names2": "GM",
+      "values": 10,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "GNB": {
+      "names2": "GW",
+      "values": 67,
+      "years": 2010,
+      "unit": "PERCENT"
+    },
+    "GRC": {
+      "names2": "GR",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "GTM": {
+      "names2": "GT",
+      "values": 9,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "HND": {
+      "names2": "HN",
+      "values": 17,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "HRV": {
+      "names2": "HR",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "HTI": {
+      "names2": "HT",
+      "values": 24,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "HUN": {
+      "names2": "HU",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "IDN": {
+      "names2": "ID",
+      "values": 5,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "IND": {
+      "names2": "IN",
+      "values": 21,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "IRL": {
+      "names2": "IE",
+      "values": 0,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "IRN": {
+      "names2": "IR",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "IRQ": {
+      "names2": "IQ",
+      "values": 3,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "ISL": {
+      "names2": "IS",
+      "values": 0,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "ISR": {
+      "names2": "IL",
+      "values": 0,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "ITA": {
+      "names2": "IT",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "JAM": {
+      "names2": "JM",
+      "values": 2,
+      "years": 2004,
+      "unit": "PERCENT"
+    },
+    "JOR": {
+      "names2": "JO",
+      "values": 0,
+      "years": 2010,
+      "unit": "PERCENT"
+    },
+    "JPN": {
+      "names2": "JP",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "KAZ": {
+      "names2": "KZ",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "KEN": {
+      "names2": "KE",
+      "values": 37,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "KGZ": {
+      "names2": "KG",
+      "values": 1,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "KIR": {
+      "names2": "KI",
+      "values": 13,
+      "years": 2006,
+      "unit": "PERCENT"
+    },
+    "KOR": {
+      "names2": "KR",
+      "values": 0,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "LAO": {
+      "names2": "LA",
+      "values": 23,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "LBN": {
+      "names2": "LB",
+      "values": 0,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "LBR": {
+      "names2": "LR",
+      "values": 41,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "LCA": {
+      "names2": "LC",
+      "values": 5,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "LKA": {
+      "names2": "LK",
+      "values": 1,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "LSO": {
+      "names2": "LS",
+      "values": 27,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "LTU": {
+      "names2": "LT",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "LUX": {
+      "names2": "LU",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "LVA": {
+      "names2": "LV",
+      "values": 1,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "MAR": {
+      "names2": "MA",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "MDA": {
+      "names2": "MD",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "MDG": {
+      "names2": "MG",
+      "values": 78,
+      "years": 2012,
+      "unit": "PERCENT"
+    },
+    "MDV": {
+      "names2": "MV",
+      "values": 0,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "MEX": {
+      "names2": "MX",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "MKD": {
+      "names2": "MK",
+      "values": 4,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "MLI": {
+      "names2": "ML",
+      "values": 50,
+      "years": 2009,
+      "unit": "PERCENT"
+    },
+    "MLT": {
+      "names2": "MT",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "MMR": {
+      "names2": "MM",
+      "values": 2,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "MNE": {
+      "names2": "ME",
+      "values": 2,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "MNG": {
+      "names2": "MN",
+      "values": 1,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "MOZ": {
+      "names2": "MZ",
+      "values": 63,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "MRT": {
+      "names2": "MR",
+      "values": 6,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "MUS": {
+      "names2": "MU",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "MWI": {
+      "names2": "MW",
+      "values": 70,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "MYS": {
+      "names2": "NY",
+      "values": 0,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "NAM": {
+      "names2": "NA",
+      "values": 13,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "NER": {
+      "names2": "NE",
+      "values": 45,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "NGA": {
+      "names2": "NG",
+      "values": 54,
+      "years": 2009,
+      "unit": "PERCENT"
+    },
+    "NIC": {
+      "names2": "NI",
+      "values": 3,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "NLD": {
+      "names2": "NL",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "NOR": {
+      "names2": "NO",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "NPL": {
+      "names2": "NP",
+      "values": 15,
+      "years": 2010,
+      "unit": "PERCENT"
+    },
+    "PAK": {
+      "names2": "PK",
+      "values": 4,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "PAN": {
+      "names2": "PA",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "PER": {
+      "names2": "PE",
+      "values": 3,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "PHL": {
+      "names2": "PH",
+      "values": 6,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "PNG": {
+      "names2": "PG",
+      "values": 38,
+      "years": 2009,
+      "unit": "PERCENT"
+    },
+    "POL": {
+      "names2": "PL",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "PRT": {
+      "names2": "PT",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "PRY": {
+      "names2": "PY",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "PSE": {
+      "names2": "PS",
+      "values": 1,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "ROU": {
+      "names2": "RO",
+      "values": 4,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "RUS": {
+      "names2": "RU",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "RWA": {
+      "names2": "RW",
+      "values": 56,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "SDN": {
+      "names2": "SD",
+      "values": 13,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "SEN": {
+      "names2": "SN",
+      "values": 38,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "SLB": {
+      "names2": "SB",
+      "values": 25,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "SLE": {
+      "names2": "SL",
+      "values": 40,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "SLV": {
+      "names2": "SV",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "SRB": {
+      "names2": "RS",
+      "values": 6,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "SSD": {
+      "names2": "SS",
+      "values": 43,
+      "years": 2009,
+      "unit": "PERCENT"
+    },
+    "STP": {
+      "names2": "ST",
+      "values": 35,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "SVK": {
+      "names2": "SK",
+      "values": 1,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "SVN": {
+      "names2": "SI",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "SWE": {
+      "names2": "SE",
+      "values": 0,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "SWZ": {
+      "names2": "SZ",
+      "values": 28,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "SYC": {
+      "names2": "SC",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "SYR": {
+      "names2": "SY",
+      "values": 2,
+      "years": 2004,
+      "unit": "PERCENT"
+    },
+    "TCD": {
+      "names2": "TD",
+      "values": 38,
+      "years": 2011,
+      "unit": "PERCENT"
+    },
+    "TGO": {
+      "names2": "TG",
+      "values": 50,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "THA": {
+      "names2": "TH",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "TJK": {
+      "names2": "TJ",
+      "values": 5,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "TLS": {
+      "names2": "TL",
+      "values": 31,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "TON": {
+      "names2": "TO",
+      "values": 1,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "TUN": {
+      "names2": "TN",
+      "values": 0,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "TUR": {
+      "names2": "TR",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "TUV": {
+      "names2": "TV",
+      "values": 3,
+      "years": 2010,
+      "unit": "PERCENT"
+    },
+    "TZA": {
+      "names2": "TZ",
+      "values": 49,
+      "years": 2017,
+      "unit": "PERCENT"
+    },
+    "UGA": {
+      "names2": "UG",
+      "values": 42,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "UKR": {
+      "names2": "UA",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "URY": {
+      "names2": "UY",
+      "values": 0,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "USA": {
+      "names2": "US",
+      "values": 1,
+      "years": 2016,
+      "unit": "PERCENT"
+    },
+    "UZB": {
+      "names2": "UZ",
+      "values": 62,
+      "years": 2003,
+      "unit": "PERCENT"
+    },
+    "VEN": {
+      "names2": "VE",
+      "values": 10,
+      "years": 2006,
+      "unit": "PERCENT"
+    },
+    "VNM": {
+      "names2": "VN",
+      "values": 2,
+      "years": 2018,
+      "unit": "PERCENT"
+    },
+    "VUT": {
+      "names2": "VU",
+      "values": 13,
+      "years": 2010,
+      "unit": "PERCENT"
+    },
+    "WSM": {
+      "names2": "WS",
+      "values": 1,
+      "years": 2013,
+      "unit": "PERCENT"
+    },
+    "YEM": {
+      "names2": "YE",
+      "values": 19,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "ZAF": {
+      "names2": "ZA",
+      "values": 19,
+      "years": 2014,
+      "unit": "PERCENT"
+    },
+    "ZMB": {
+      "names2": "ZM",
+      "values": 58,
+      "years": 2015,
+      "unit": "PERCENT"
+    },
+    "ZWE": {
+      "names2": "ZW",
+      "values": 34,
+      "years": 2017,
+      "unit": "PERCENT"
+    }
+  }
+}
+const max = {
+  "values": 78
+} 
+
+const INDEX = '1.1.1'
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let MAPCLR
+let MAPLAB
+let table = []
+let iso3cds = []
+for (let iso3cd in indexData) {
+  iso3cds.push(iso3cd)
+  const g = 
+    indexData[iso3cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso3cd)
+  } else {
+    table[g] = [iso3cd]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let iso3cd in indexData) {
+  match1.push(iso3cd)
+  match1.push(indexData[iso3cd]['values'].toString())
+  match2.push(iso3cd)
+  match2.push([
+    'concat',
+    [
+      'get',
+      'MAPCLR'
+    ],
+    ': ',
+    indexData[iso3cd][TYPE]
+  ])
+  match3.push(iso3cd)
+  match3.push([
+    'concat',
+    [
+      'get',
+      'MAPLAB'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    TYPE
+  ])
+}
+match1.push('?')
+match2.push('?')
+match3.push('?')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+const fillExtrusionHeight = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let iso3cd in indexData) {
+  fillExtrusionHeight.push([iso3cd])
+  fillExtrusionHeight.push(indexData[iso3cd][TYPE] * 100)
+}
+fillExtrusionHeight.push(0)
+console.log(fillExtrusionHeight)
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'MAPCLR'
+      ],
+      iso3cds,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+  map.addLayer({
+    id: 'bnda-extrusion',
+    source: 'v',
+    'source-layer': 'bnda',
+    type: 'fill-extrusion',
+    paint: {
+      'fill-extrusion-height': fillExtrusionHeight,
+      'fill-extrusion-color': fillExpression,
+      'fill-extrusion-opacity': 0.2
+    } 
+  })
+})
+</script>
+</body>
+</html>
