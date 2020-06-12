@@ -1,0 +1,9 @@
+desc 'host the site'
+task :host do
+  sh "budo -d docs"
+end
+
+desc 'build the site'
+task :build do
+  sh "ruby build.rb src/sdgs-111-data.csv > docs/index.html"
+end

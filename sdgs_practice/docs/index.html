@@ -1,0 +1,1004 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "1.1.1": {
+    "AGO": {
+      "names2": "AO",
+      "values": 48,
+      "years": 2018
+    },
+    "ALB": {
+      "names2": "AL",
+      "values": 2,
+      "years": 2017
+    },
+    "ARE": {
+      "names2": "AE",
+      "values": 0,
+      "years": 2014
+    },
+    "ARG": {
+      "names2": "AR",
+      "values": 1,
+      "years": 2018
+    },
+    "ARM": {
+      "names2": "AM",
+      "values": 2,
+      "years": 2018
+    },
+    "AUS": {
+      "names2": "AU",
+      "values": 1,
+      "years": 2014
+    },
+    "AUT": {
+      "names2": "AT",
+      "values": 0,
+      "years": 2017
+    },
+    "AZE": {
+      "names2": "AZ",
+      "values": 0,
+      "years": 2005
+    },
+    "BDI": {
+      "names2": "BI",
+      "values": 72,
+      "years": 2013
+    },
+    "BEL": {
+      "names2": "BE",
+      "values": 0,
+      "years": 2017
+    },
+    "BEN": {
+      "names2": "BJ",
+      "values": 50,
+      "years": 2015
+    },
+    "BFA": {
+      "names2": "BF",
+      "values": 44,
+      "years": 2014
+    },
+    "BGD": {
+      "names2": "BD",
+      "values": 15,
+      "years": 2016
+    },
+    "BGR": {
+      "names2": "BG",
+      "values": 1,
+      "years": 2017
+    },
+    "BIH": {
+      "names2": "BA",
+      "values": 0,
+      "years": 2011
+    },
+    "BLR": {
+      "names2": "BY",
+      "values": 0,
+      "years": 2018
+    },
+    "BOL": {
+      "names2": "BO",
+      "values": 5,
+      "years": 2018
+    },
+    "BRA": {
+      "names2": "BR",
+      "values": 4,
+      "years": 2018
+    },
+    "BTN": {
+      "names2": "BT",
+      "values": 2,
+      "years": 2017
+    },
+    "BWA": {
+      "names2": "BW",
+      "values": 16,
+      "years": 2015
+    },
+    "CAF": {
+      "names2": "CF",
+      "values": 66,
+      "years": 2008
+    },
+    "CAN": {
+      "names2": "CA",
+      "values": 1,
+      "years": 2013
+    },
+    "CHE": {
+      "names2": "CH",
+      "values": 0,
+      "years": 2017
+    },
+    "CHL": {
+      "names2": "CL",
+      "values": 0,
+      "years": 2017
+    },
+    "CHN": {
+      "names2": "CN",
+      "values": 1,
+      "years": 2016
+    },
+    "CIV": {
+      "names2": "CI",
+      "values": 28,
+      "years": 2015
+    },
+    "CMR": {
+      "names2": "CM",
+      "values": 24,
+      "years": 2014
+    },
+    "COD": {
+      "names2": "CD",
+      "values": 77,
+      "years": 2012
+    },
+    "COG": {
+      "names2": "CG",
+      "values": 37,
+      "years": 2011
+    },
+    "COL": {
+      "names2": "CO",
+      "values": 4,
+      "years": 2018
+    },
+    "COM": {
+      "names2": "KM",
+      "values": 18,
+      "years": 2014
+    },
+    "CPV": {
+      "names2": "CV",
+      "values": 3,
+      "years": 2015
+    },
+    "CRI": {
+      "names2": "CR",
+      "values": 1,
+      "years": 2018
+    },
+    "CYP": {
+      "names2": "CY",
+      "values": 0,
+      "years": 2017
+    },
+    "CZE": {
+      "names2": "CZ",
+      "values": 0,
+      "years": 2017
+    },
+    "DEU": {
+      "names2": "DE",
+      "values": 0,
+      "years": 2016
+    },
+    "DJI": {
+      "names2": "DJ",
+      "values": 17,
+      "years": 2017
+    },
+    "DNK": {
+      "names2": "DK",
+      "values": 0,
+      "years": 2017
+    },
+    "DOM": {
+      "names2": "DO",
+      "values": 0,
+      "years": 2018
+    },
+    "DZA": {
+      "names2": "DZ",
+      "values": 1,
+      "years": 2011
+    },
+    "ECU": {
+      "names2": "EC",
+      "values": 3,
+      "years": 2018
+    },
+    "EGY": {
+      "names2": "EG",
+      "values": 3,
+      "years": 2017
+    },
+    "ESP": {
+      "names2": "ES",
+      "values": 1,
+      "years": 2017
+    },
+    "EST": {
+      "names2": "EE",
+      "values": 0,
+      "years": 2017
+    },
+    "ETH": {
+      "names2": "ET",
+      "values": 31,
+      "years": 2015
+    },
+    "FIN": {
+      "names2": "FI",
+      "values": 0,
+      "years": 2017
+    },
+    "FJI": {
+      "names2": "FJ",
+      "values": 1,
+      "years": 2013
+    },
+    "FRA": {
+      "names2": "FR",
+      "values": 0,
+      "years": 2017
+    },
+    "FSM": {
+      "names2": "FM",
+      "values": 15,
+      "years": 2013
+    },
+    "GAB": {
+      "names2": "GA",
+      "values": 3,
+      "years": 2017
+    },
+    "GBR": {
+      "names2": "GB",
+      "values": 0,
+      "years": 2016
+    },
+    "GEO": {
+      "names2": "GE",
+      "values": 5,
+      "years": 2018
+    },
+    "GHA": {
+      "names2": "GH",
+      "values": 13,
+      "years": 2016
+    },
+    "GIN": {
+      "names2": "GN",
+      "values": 35,
+      "years": 2012
+    },
+    "GMB": {
+      "names2": "GM",
+      "values": 10,
+      "years": 2015
+    },
+    "GNB": {
+      "names2": "GW",
+      "values": 67,
+      "years": 2010
+    },
+    "GRC": {
+      "names2": "GR",
+      "values": 1,
+      "years": 2017
+    },
+    "GTM": {
+      "names2": "GT",
+      "values": 9,
+      "years": 2014
+    },
+    "HND": {
+      "names2": "HN",
+      "values": 17,
+      "years": 2018
+    },
+    "HRV": {
+      "names2": "HR",
+      "values": 1,
+      "years": 2017
+    },
+    "HTI": {
+      "names2": "HT",
+      "values": 24,
+      "years": 2012
+    },
+    "HUN": {
+      "names2": "HU",
+      "values": 1,
+      "years": 2017
+    },
+    "IDN": {
+      "names2": "ID",
+      "values": 5,
+      "years": 2018
+    },
+    "IND": {
+      "names2": "IN",
+      "values": 21,
+      "years": 2011
+    },
+    "IRL": {
+      "names2": "IE",
+      "values": 0,
+      "years": 2016
+    },
+    "IRN": {
+      "names2": "IR",
+      "values": 0,
+      "years": 2017
+    },
+    "IRQ": {
+      "names2": "IQ",
+      "values": 3,
+      "years": 2012
+    },
+    "ISL": {
+      "names2": "IS",
+      "values": 0,
+      "years": 2015
+    },
+    "ISR": {
+      "names2": "IL",
+      "values": 0,
+      "years": 2016
+    },
+    "ITA": {
+      "names2": "IT",
+      "values": 1,
+      "years": 2017
+    },
+    "JAM": {
+      "names2": "JM",
+      "values": 2,
+      "years": 2004
+    },
+    "JOR": {
+      "names2": "JO",
+      "values": 0,
+      "years": 2010
+    },
+    "JPN": {
+      "names2": "JP",
+      "values": 1,
+      "years": 2013
+    },
+    "KAZ": {
+      "names2": "KZ",
+      "values": 0,
+      "years": 2017
+    },
+    "KEN": {
+      "names2": "KE",
+      "values": 37,
+      "years": 2015
+    },
+    "KGZ": {
+      "names2": "KG",
+      "values": 1,
+      "years": 2018
+    },
+    "KIR": {
+      "names2": "KI",
+      "values": 13,
+      "years": 2006
+    },
+    "KOR": {
+      "names2": "KR",
+      "values": 0,
+      "years": 2012
+    },
+    "LAO": {
+      "names2": "LA",
+      "values": 23,
+      "years": 2012
+    },
+    "LBN": {
+      "names2": "LB",
+      "values": 0,
+      "years": 2011
+    },
+    "LBR": {
+      "names2": "LR",
+      "values": 41,
+      "years": 2016
+    },
+    "LCA": {
+      "names2": "LC",
+      "values": 5,
+      "years": 2016
+    },
+    "LKA": {
+      "names2": "LK",
+      "values": 1,
+      "years": 2016
+    },
+    "LSO": {
+      "names2": "LS",
+      "values": 27,
+      "years": 2017
+    },
+    "LTU": {
+      "names2": "LT",
+      "values": 1,
+      "years": 2017
+    },
+    "LUX": {
+      "names2": "LU",
+      "values": 0,
+      "years": 2017
+    },
+    "LVA": {
+      "names2": "LV",
+      "values": 1,
+      "years": 2017
+    },
+    "MAR": {
+      "names2": "MA",
+      "values": 1,
+      "years": 2013
+    },
+    "MDA": {
+      "names2": "MD",
+      "values": 0,
+      "years": 2018
+    },
+    "MDG": {
+      "names2": "MG",
+      "values": 78,
+      "years": 2012
+    },
+    "MDV": {
+      "names2": "MV",
+      "values": 0,
+      "years": 2016
+    },
+    "MEX": {
+      "names2": "MX",
+      "values": 2,
+      "years": 2018
+    },
+    "MKD": {
+      "names2": "MK",
+      "values": 4,
+      "years": 2017
+    },
+    "MLI": {
+      "names2": "ML",
+      "values": 50,
+      "years": 2009
+    },
+    "MLT": {
+      "names2": "MT",
+      "values": 0,
+      "years": 2017
+    },
+    "MMR": {
+      "names2": "MM",
+      "values": 2,
+      "years": 2017
+    },
+    "MNE": {
+      "names2": "ME",
+      "values": 2,
+      "years": 2015
+    },
+    "MNG": {
+      "names2": "MN",
+      "values": 1,
+      "years": 2018
+    },
+    "MOZ": {
+      "names2": "MZ",
+      "values": 63,
+      "years": 2014
+    },
+    "MRT": {
+      "names2": "MR",
+      "values": 6,
+      "years": 2014
+    },
+    "MUS": {
+      "names2": "MU",
+      "values": 0,
+      "years": 2017
+    },
+    "MWI": {
+      "names2": "MW",
+      "values": 70,
+      "years": 2016
+    },
+    "MYS": {
+      "names2": "NY",
+      "values": 0,
+      "years": 2015
+    },
+    "NAM": {
+      "names2": "NA",
+      "values": 13,
+      "years": 2015
+    },
+    "NER": {
+      "names2": "NE",
+      "values": 45,
+      "years": 2014
+    },
+    "NGA": {
+      "names2": "NG",
+      "values": 54,
+      "years": 2009
+    },
+    "NIC": {
+      "names2": "NI",
+      "values": 3,
+      "years": 2014
+    },
+    "NLD": {
+      "names2": "NL",
+      "values": 0,
+      "years": 2017
+    },
+    "NOR": {
+      "names2": "NO",
+      "values": 0,
+      "years": 2017
+    },
+    "NPL": {
+      "names2": "NP",
+      "values": 15,
+      "years": 2010
+    },
+    "PAK": {
+      "names2": "PK",
+      "values": 4,
+      "years": 2015
+    },
+    "PAN": {
+      "names2": "PA",
+      "values": 2,
+      "years": 2018
+    },
+    "PER": {
+      "names2": "PE",
+      "values": 3,
+      "years": 2018
+    },
+    "PHL": {
+      "names2": "PH",
+      "values": 6,
+      "years": 2015
+    },
+    "PNG": {
+      "names2": "PG",
+      "values": 38,
+      "years": 2009
+    },
+    "POL": {
+      "names2": "PL",
+      "values": 0,
+      "years": 2017
+    },
+    "PRT": {
+      "names2": "PT",
+      "values": 0,
+      "years": 2017
+    },
+    "PRY": {
+      "names2": "PY",
+      "values": 2,
+      "years": 2018
+    },
+    "PSE": {
+      "names2": "PS",
+      "values": 1,
+      "years": 2016
+    },
+    "ROU": {
+      "names2": "RO",
+      "values": 4,
+      "years": 2017
+    },
+    "RUS": {
+      "names2": "RU",
+      "values": 0,
+      "years": 2018
+    },
+    "RWA": {
+      "names2": "RW",
+      "values": 56,
+      "years": 2016
+    },
+    "SDN": {
+      "names2": "SD",
+      "values": 13,
+      "years": 2014
+    },
+    "SEN": {
+      "names2": "SN",
+      "values": 38,
+      "years": 2011
+    },
+    "SLB": {
+      "names2": "SB",
+      "values": 25,
+      "years": 2013
+    },
+    "SLE": {
+      "names2": "SL",
+      "values": 40,
+      "years": 2018
+    },
+    "SLV": {
+      "names2": "SV",
+      "values": 2,
+      "years": 2018
+    },
+    "SRB": {
+      "names2": "RS",
+      "values": 6,
+      "years": 2017
+    },
+    "SSD": {
+      "names2": "SS",
+      "values": 43,
+      "years": 2009
+    },
+    "STP": {
+      "names2": "ST",
+      "values": 35,
+      "years": 2017
+    },
+    "SVK": {
+      "names2": "SK",
+      "values": 1,
+      "years": 2016
+    },
+    "SVN": {
+      "names2": "SI",
+      "values": 0,
+      "years": 2017
+    },
+    "SWE": {
+      "names2": "SE",
+      "values": 0,
+      "years": 2017
+    },
+    "SWZ": {
+      "names2": "SZ",
+      "values": 28,
+      "years": 2016
+    },
+    "SYC": {
+      "names2": "SC",
+      "values": 1,
+      "years": 2013
+    },
+    "SYR": {
+      "names2": "SY",
+      "values": 2,
+      "years": 2004
+    },
+    "TCD": {
+      "names2": "TD",
+      "values": 38,
+      "years": 2011
+    },
+    "TGO": {
+      "names2": "TG",
+      "values": 50,
+      "years": 2015
+    },
+    "THA": {
+      "names2": "TH",
+      "values": 0,
+      "years": 2018
+    },
+    "TJK": {
+      "names2": "TJ",
+      "values": 5,
+      "years": 2015
+    },
+    "TLS": {
+      "names2": "TL",
+      "values": 31,
+      "years": 2014
+    },
+    "TON": {
+      "names2": "TO",
+      "values": 1,
+      "years": 2015
+    },
+    "TUN": {
+      "names2": "TN",
+      "values": 0,
+      "years": 2015
+    },
+    "TUR": {
+      "names2": "TR",
+      "values": 0,
+      "years": 2018
+    },
+    "TUV": {
+      "names2": "TV",
+      "values": 3,
+      "years": 2010
+    },
+    "TZA": {
+      "names2": "TZ",
+      "values": 49,
+      "years": 2017
+    },
+    "UGA": {
+      "names2": "UG",
+      "values": 42,
+      "years": 2016
+    },
+    "UKR": {
+      "names2": "UA",
+      "values": 0,
+      "years": 2018
+    },
+    "URY": {
+      "names2": "UY",
+      "values": 0,
+      "years": 2018
+    },
+    "USA": {
+      "names2": "US",
+      "values": 1,
+      "years": 2016
+    },
+    "UZB": {
+      "names2": "UZ",
+      "values": 62,
+      "years": 2003
+    },
+    "VEN": {
+      "names2": "VE",
+      "values": 10,
+      "years": 2006
+    },
+    "VNM": {
+      "names2": "VN",
+      "values": 2,
+      "years": 2018
+    },
+    "VUT": {
+      "names2": "VU",
+      "values": 13,
+      "years": 2010
+    },
+    "WSM": {
+      "names2": "WS",
+      "values": 1,
+      "years": 2013
+    },
+    "YEM": {
+      "names2": "YE",
+      "values": 19,
+      "years": 2014
+    },
+    "ZAF": {
+      "names2": "ZA",
+      "values": 19,
+      "years": 2014
+    },
+    "ZMB": {
+      "names2": "ZM",
+      "values": 58,
+      "years": 2015
+    },
+    "ZWE": {
+      "names2": "ZW",
+      "values": 34,
+      "years": 2017
+    }
+  },
+  "": {
+    "": {
+      "names2": null,
+      "values": 0,
+      "years": 0
+    }
+  }
+}
+const max = {
+  "values": 78
+} 
+
+const INDEX = '1.1.1'
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let MAPCLR
+let MAPLAB
+let table = []
+let iso3cds = []
+for (let iso3cd in indexData) {
+  iso3cds.push(iso3cd)
+  const g = 
+    indexData[iso3cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso3cd.toUpperCase())
+  } else {
+    table[g] = [iso3cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let iso3cd in dailyData) {
+  match1.push(iso3cd.toUpperCase())
+  match1.push(indexData[iso3cd]['value'].toString())
+  match2.push(iso3cd.toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'MAPCLR'
+    ],
+    ': ',
+    indexData[iso3cd][TYPE]
+  ])
+  match3.push(iso3cd.toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'MAPLAB'
+    ],
+    ': ',
+    dailyData[iso2cd][TYPE],
+    ' ',
+    TYPE
+  ])
+}
+match1.push('?')
+match2.push('?')
+match3.push('?')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  2,
+  match2,
+  4,
+  match3
+]
+
+const fillExtrusionHeight = [
+  'match',
+  [
+    'get',
+    'MAPCLR'
+  ]
+]
+for (let iso3cd in indexData) {
+  fillExtrusionHeight.push([iso3cd.toUpperCase()])
+  fillExtrusionHeight.push(indexData[iso3cd][TYPE] * 100)
+}
+fillExtrusionHeight.push(0)
+console.log(fillExtrusionHeight)
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | SDGS Index ${INDEX} from SDGs statitics`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'MAPCLR'
+      ],
+      iso3cd,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+  map.addLayer({
+    id: 'bnda-extrusion',
+    source: 'v',
+    'source-layer': 'bnda',
+    type: 'fill-extrusion',
+    paint: {
+      'fill-extrusion-height': fillExtrusionHeight,
+      'fill-extrusion-color': fillExpression,
+      'fill-extrusion-opacity': 0.2
+    } 
+  })
+})
+</script>
+</body>
+</html>
