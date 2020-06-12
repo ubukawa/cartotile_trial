@@ -14,8 +14,8 @@ while gets
   values = r[3].to_i
   years = r[4].to_i
  
-  data[r[0]][r[1]] = {
-    :names2 => r[2],
+  data[r[0]][r[1].downcase] = {
+    :names => r[2],
     :values => values,
     :years => years,
     :unit => r[5]  
@@ -43,32 +43,31 @@ body { margin: 0; top: 0; bottom: 0; width: 100%; }
 const data = #{JSON.pretty_generate(data)}
 const max = #{JSON.pretty_generate(max)} 
 
-const INDEX = '1.1.1'
+const INDEX = '15.1.1'
 const TYPE = 'values'
 
 const indexData = data[INDEX]
 console.log(indexData)
 
-let MAPCLR
-let MAPLAB
+let ISO_A2
 let table = []
-let iso3cds = []
-for (let iso3cd in indexData) {
-  iso3cds.push(iso3cd)
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso2cds.push(iso2cd)
   const g = 
-    indexData[iso3cd][TYPE] / 
+    indexData[iso2cd][TYPE] / 
     max[TYPE]
   if (table[g]) {
-    table[g].push(iso3cd)
+    table[g].push(iso2cd.toUpperCase())
   } else {
-    table[g] = [iso3cd]
+    table[g] = [iso2cd.toUpperCase()]
   }
 }
 let fillExpression = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 for (let g in table) {
@@ -95,42 +94,42 @@ let match1 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 let match2 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 let match3 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
-for (let iso3cd in indexData) {
-  match1.push(iso3cd)
-  match1.push(indexData[iso3cd]['values'].toString())
-  match2.push(iso3cd)
+for (let iso2cd in indexData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(iso2cd.toUpperCase())
   match2.push([
     'concat',
     [
       'get',
-      'MAPCLR'
+      'ISO_A3'
     ],
     ': ',
-    indexData[iso3cd][TYPE]
+    indexData[iso2cd][TYPE]
   ])
-  match3.push(iso3cd)
+  match3.push(iso2cd.toUpperCase())
   match3.push([
     'concat',
     [
       'get',
-      'MAPLAB'
+      'NAME'
     ],
     ': ',
     indexData[iso2cd][TYPE],
@@ -158,12 +157,12 @@ const fillExtrusionHeight = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
-for (let iso3cd in indexData) {
-  fillExtrusionHeight.push([iso3cd])
-  fillExtrusionHeight.push(indexData[iso3cd][TYPE] * 100)
+for (let iso2cd in indexData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(indexData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
 console.log(fillExtrusionHeight)
@@ -189,9 +188,9 @@ map.on('load', () => {
       'match',
       [
         'get',
-        'MAPCLR'
+        'ISO_A2'
       ],
-      iso3cds,
+      ISO_A2,
       [
         'rgb',
         0,

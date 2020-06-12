@@ -1,0 +1,24 @@
+desc 'host the site'
+task :host do
+  sh "budo -d docs"
+end
+
+desc 'build the site'
+task :build do
+  sh "ruby build_01.rb src/01.csv > docs/sdgs01.html"
+  sh "ruby build_02.rb src/02.csv > docs/sdgs02.html"
+  sh "ruby build_03.rb src/03.csv > docs/sdgs03.html"
+  sh "ruby build_04.rb src/04.csv > docs/sdgs04.html"
+  sh "ruby build_05.rb src/05.csv > docs/sdgs05.html"
+  sh "ruby build_06.rb src/06.csv > docs/sdgs06.html"
+  sh "ruby build_07.rb src/07.csv > docs/sdgs07.html"
+  sh "ruby build_08.rb src/08.csv > docs/sdgs08.html"
+  sh "ruby build_09.rb src/09.csv > docs/sdgs09.html"
+  sh "ruby build_10.rb src/10.csv > docs/sdgs10.html"
+  sh "ruby build_11.rb src/11.csv > docs/sdgs11.html"
+  sh "ruby build_12.rb src/12.csv > docs/sdgs12.html"
+  sh "ruby build_13.rb src/13.csv > docs/sdgs13.html"
+  sh "ruby build_14.rb src/14.csv > docs/sdgs14.html"
+  sh "ruby build_15.rb src/15.csv > docs/sdgs15.html"
+  sh "ruby build_16.rb src/16.csv > docs/sdgs16.html"
+end

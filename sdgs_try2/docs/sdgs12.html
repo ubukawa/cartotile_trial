@@ -1,0 +1,1317 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "12.2.2": {
+    "af": {
+      "names": "AFG",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ao": {
+      "names": "AGO",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "al": {
+      "names": "ALB",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ae": {
+      "names": "ARE",
+      "values": 22,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ar": {
+      "names": "ARG",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "am": {
+      "names": "ARM",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ag": {
+      "names": "ATG",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "au": {
+      "names": "AUS",
+      "values": 37,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "at": {
+      "names": "AUT",
+      "values": 15,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "az": {
+      "names": "AZE",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bi": {
+      "names": "BDI",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "be": {
+      "names": "BEL",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bj": {
+      "names": "BEN",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bf": {
+      "names": "BFA",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bd": {
+      "names": "BGD",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bg": {
+      "names": "BGR",
+      "values": 19,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bh": {
+      "names": "BHR",
+      "values": 28,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bs": {
+      "names": "BHS",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ba": {
+      "names": "BIH",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "by": {
+      "names": "BLR",
+      "values": 17,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bz": {
+      "names": "BLZ",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bo": {
+      "names": "BOL",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "br": {
+      "names": "BRA",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bb": {
+      "names": "BRB",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bn": {
+      "names": "BRN",
+      "values": 22,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bt": {
+      "names": "BTN",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "bw": {
+      "names": "BWA",
+      "values": 29,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cf": {
+      "names": "CAF",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ca": {
+      "names": "CAN",
+      "values": 28,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ch": {
+      "names": "CHE",
+      "values": 13,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cl": {
+      "names": "CHL",
+      "values": 41,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cn": {
+      "names": "CHN",
+      "values": 24,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ci": {
+      "names": "CIV",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cm": {
+      "names": "CMR",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cd": {
+      "names": "COD",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cg": {
+      "names": "COG",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "co": {
+      "names": "COL",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "km": {
+      "names": "COM",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cv": {
+      "names": "CPV",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cr": {
+      "names": "CRI",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cu": {
+      "names": "CUB",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cy": {
+      "names": "CYP",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "cz": {
+      "names": "CZE",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "de": {
+      "names": "DEU",
+      "values": 14,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "dj": {
+      "names": "DJI",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "dm": {
+      "names": "DMA",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "dk": {
+      "names": "DNK",
+      "values": 15,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "do": {
+      "names": "DOM",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "dz": {
+      "names": "DZA",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ec": {
+      "names": "ECU",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "eg": {
+      "names": "EGY",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "er": {
+      "names": "ERI",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "es": {
+      "names": "ESP",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ee": {
+      "names": "EST",
+      "values": 35,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "et": {
+      "names": "ETH",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "fi": {
+      "names": "FIN",
+      "values": 24,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "fj": {
+      "names": "FJI",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "fr": {
+      "names": "FRA",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "fm": {
+      "names": "FSM",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ga": {
+      "names": "GAB",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gb": {
+      "names": "GBR",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ge": {
+      "names": "GEO",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gh": {
+      "names": "GHA",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gn": {
+      "names": "GIN",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gm": {
+      "names": "GMB",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gw": {
+      "names": "GNB",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gq": {
+      "names": "GNQ",
+      "values": 19,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gr": {
+      "names": "GRC",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gd": {
+      "names": "GRD",
+      "values": 0,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gt": {
+      "names": "GTM",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "gy": {
+      "names": "GUY",
+      "values": 21,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "hn": {
+      "names": "HND",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "hr": {
+      "names": "HRV",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ht": {
+      "names": "HTI",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "hu": {
+      "names": "HUN",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "id": {
+      "names": "IDN",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "in": {
+      "names": "IND",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ie": {
+      "names": "IRL",
+      "values": 13,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ir": {
+      "names": "IRN",
+      "values": 14,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "iq": {
+      "names": "IRQ",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "is": {
+      "names": "ISL",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "il": {
+      "names": "ISR",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "it": {
+      "names": "ITA",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "jm": {
+      "names": "JAM",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "jo": {
+      "names": "JOR",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "jp": {
+      "names": "JPN",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kz": {
+      "names": "KAZ",
+      "values": 29,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ke": {
+      "names": "KEN",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kg": {
+      "names": "KGZ",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kh": {
+      "names": "KHM",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ki": {
+      "names": "KIR",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kr": {
+      "names": "KOR",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kw": {
+      "names": "KWT",
+      "values": 29,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "la": {
+      "names": "LAO",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lb": {
+      "names": "LBN",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lr": {
+      "names": "LBR",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ly": {
+      "names": "LBY",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lk": {
+      "names": "LKA",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ls": {
+      "names": "LSO",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lt": {
+      "names": "LTU",
+      "values": 15,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lu": {
+      "names": "LUX",
+      "values": 28,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "lv": {
+      "names": "LVA",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ma": {
+      "names": "MAR",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "md": {
+      "names": "MDA",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mg": {
+      "names": "MDG",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mv": {
+      "names": "MDV",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mx": {
+      "names": "MEX",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mh": {
+      "names": "MHL",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mk": {
+      "names": "MKD",
+      "values": 14,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ml": {
+      "names": "MLI",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mt": {
+      "names": "MLT",
+      "values": 15,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mm": {
+      "names": "MMR",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "me": {
+      "names": "MNE",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mn": {
+      "names": "MNG",
+      "values": 34,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mz": {
+      "names": "MOZ",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mr": {
+      "names": "MRT",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mu": {
+      "names": "MUS",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "mw": {
+      "names": "MWI",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ny": {
+      "names": "MYS",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "na": {
+      "names": "NAM",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ne": {
+      "names": "NER",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ng": {
+      "names": "NGA",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ni": {
+      "names": "NIC",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "nl": {
+      "names": "NLD",
+      "values": 13,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "no": {
+      "names": "NOR",
+      "values": 21,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "np": {
+      "names": "NPL",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "nz": {
+      "names": "NZL",
+      "values": 24,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "om": {
+      "names": "OMN",
+      "values": 31,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pk": {
+      "names": "PAK",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pa": {
+      "names": "PAN",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pe": {
+      "names": "PER",
+      "values": 14,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ph": {
+      "names": "PHL",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pw": {
+      "names": "PLW",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pg": {
+      "names": "PNG",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pl": {
+      "names": "POL",
+      "values": 18,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "kp": {
+      "names": "PRK",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "pt": {
+      "names": "PRT",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "py": {
+      "names": "PRY",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "qa": {
+      "names": "QAT",
+      "values": 49,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ro": {
+      "names": "ROU",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ru": {
+      "names": "RUS",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "rw": {
+      "names": "RWA",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sa": {
+      "names": "SAU",
+      "values": 24,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sd": {
+      "names": "SDN",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sn": {
+      "names": "SEN",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sg": {
+      "names": "SGP",
+      "values": 32,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sb": {
+      "names": "SLB",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sl": {
+      "names": "SLE",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sv": {
+      "names": "SLV",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "so": {
+      "names": "SOM",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "rs": {
+      "names": "SRB",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ss": {
+      "names": "SSD",
+      "values": 0,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "st": {
+      "names": "STP",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sr": {
+      "names": "SUR",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sk": {
+      "names": "SVK",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "si": {
+      "names": "SVN",
+      "values": 13,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "se": {
+      "names": "SWE",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sz": {
+      "names": "SWZ",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sc": {
+      "names": "SYC",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "sy": {
+      "names": "SYR",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "td": {
+      "names": "TCD",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tg": {
+      "names": "TGO",
+      "values": 4,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "th": {
+      "names": "THA",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tj": {
+      "names": "TJK",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tm": {
+      "names": "TKM",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tl": {
+      "names": "TLS",
+      "values": 7,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "to": {
+      "names": "TON",
+      "values": 16,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tt": {
+      "names": "TTO",
+      "values": 19,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tn": {
+      "names": "TUN",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tr": {
+      "names": "TUR",
+      "values": 18,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tv": {
+      "names": "TUV",
+      "values": 1,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "tz": {
+      "names": "TZA",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ug": {
+      "names": "UGA",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ua": {
+      "names": "UKR",
+      "values": 12,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "uy": {
+      "names": "URY",
+      "values": 34,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "us": {
+      "names": "USA",
+      "values": 18,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "uz": {
+      "names": "UZB",
+      "values": 9,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ve": {
+      "names": "VEN",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "vg": {
+      "names": "VGB",
+      "values": 0,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "vn": {
+      "names": "VNM",
+      "values": 10,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "vu": {
+      "names": "VUT",
+      "values": 6,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ws": {
+      "names": "WSM",
+      "values": 5,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "ye": {
+      "names": "YEM",
+      "values": 2,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "za": {
+      "names": "ZAF",
+      "values": 11,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "zm": {
+      "names": "ZMB",
+      "values": 8,
+      "years": 2017,
+      "unit": "TONNES"
+    },
+    "zw": {
+      "names": "ZWE",
+      "values": 3,
+      "years": 2017,
+      "unit": "TONNES"
+    }
+  }
+}
+const max = {
+  "values": 49
+} 
+
+const INDEX = '12.2.2'
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let ISO_A2
+let table = []
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso2cds.push(iso2cd)
+  const g = 
+    indexData[iso2cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso2cd.toUpperCase())
+  } else {
+    table[g] = [iso2cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(iso2cd.toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'ISO_A3'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE]
+  ])
+  match3.push(iso2cd.toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'NAME'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    TYPE
+  ])
+}
+match1.push('?')
+match2.push('?')
+match3.push('?')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+const fillExtrusionHeight = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let iso2cd in indexData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(indexData[iso2cd][TYPE] * 100)
+}
+fillExtrusionHeight.push(0)
+console.log(fillExtrusionHeight)
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'ISO_A2'
+      ],
+      ISO_A2,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+  map.addLayer({
+    id: 'bnda-extrusion',
+    source: 'v',
+    'source-layer': 'bnda',
+    type: 'fill-extrusion',
+    paint: {
+      'fill-extrusion-height': fillExtrusionHeight,
+      'fill-extrusion-color': fillExpression,
+      'fill-extrusion-opacity': 0.2
+    } 
+  })
+})
+</script>
+</body>
+</html>

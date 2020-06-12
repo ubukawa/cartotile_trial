@@ -2,7 +2,10 @@ require 'json'
 
 data = Hash.new {|h, k| h[k] = Hash.new {|h, k| h[k] = {}}}
 max = {
-  :values => 0, 
+  :deaths => 0, 
+  :cumulativeDeaths => 0,
+  :confirmed => 0,
+  :cumulativeConfirmed => 0
 }
 first = true
 while gets
@@ -11,16 +14,23 @@ while gets
     next
   end
   r = $_.strip.split(',')
-  values = r[3].to_i
-  years = r[4].to_i
- 
-  data[r[0]][r[1]] = {
-    :names2 => r[2],
-    :values => values,
-    :years => years,
-    :unit => r[5]  
+  deaths = r[4].to_i
+  cumulativeDeaths = r[5].to_i
+  confirmed = r[6].to_i
+  cumulativeConfirmed = r[7].to_i
+
+  data[r[0]][r[1].downcase] = {
+    :name => r[2],
+    :deaths => deaths,
+    :cumulativeDeaths => cumulativeDeaths,
+    :confirmed => confirmed,
+    :cumulativeConfirmed => cumulativeConfirmed
   }
-  max[:values] = [max[:values], values].max
+  max[:deaths] = [max[:deaths], deaths].max
+  max[:cumulativeDeaths] = [max[:cumulativeDeaths], cumulativeDeaths].max
+  max[:confirmed] = [max[:confirmed], confirmed].max
+  max[:cumulativeConfirmed] =
+    [max[:cumulativeConfirmed], cumulativeConfirmed].max
 end
 
 print <<-EOS
@@ -43,32 +53,31 @@ body { margin: 0; top: 0; bottom: 0; width: 100%; }
 const data = #{JSON.pretty_generate(data)}
 const max = #{JSON.pretty_generate(max)} 
 
-const INDEX = '1.1.1'
-const TYPE = 'values'
+const DATE = '2020-04-17'
+const TYPE = 'confirmed'
 
-const indexData = data[INDEX]
-console.log(indexData)
+const dailyData = data[DATE]
+console.log(dailyData)
 
-let MAPCLR
-let MAPLAB
+let ISO_A2
 let table = []
-let iso3cds = []
-for (let iso3cd in indexData) {
-  iso3cds.push(iso3cd)
+let iso2cds = []
+for (let iso2cd in dailyData) {
+  iso2cds.push(iso2cd)
   const g = 
-    indexData[iso3cd][TYPE] / 
+    dailyData[iso2cd][TYPE] / 
     max[TYPE]
   if (table[g]) {
-    table[g].push(iso3cd)
+    table[g].push(iso2cd.toUpperCase())
   } else {
-    table[g] = [iso3cd]
+    table[g] = [iso2cd.toUpperCase()]
   }
 }
 let fillExpression = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 for (let g in table) {
@@ -95,45 +104,45 @@ let match1 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 let match2 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
 let match3 = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
-for (let iso3cd in indexData) {
-  match1.push(iso3cd)
-  match1.push(indexData[iso3cd]['values'].toString())
-  match2.push(iso3cd)
+for (let iso2cd in dailyData) {
+  match1.push(iso2cd.toUpperCase())
+  match1.push(dailyData[iso2cd]['confirmed'].toString())
+  match2.push(iso2cd.toUpperCase())
   match2.push([
     'concat',
     [
       'get',
-      'MAPCLR'
+      'ISO_A3'
     ],
     ': ',
-    indexData[iso3cd][TYPE]
+    dailyData[iso2cd][TYPE]
   ])
-  match3.push(iso3cd)
+  match3.push(iso2cd.toUpperCase())
   match3.push([
     'concat',
     [
       'get',
-      'MAPLAB'
+      'NAME'
     ],
     ': ',
-    indexData[iso2cd][TYPE],
+    dailyData[iso2cd][TYPE],
     ' ',
     TYPE
   ])
@@ -148,9 +157,9 @@ const textFieldExpression = [
     'zoom'
   ],
   match1,
-  1,
+  2,
   match2,
-  3,
+  4,
   match3
 ]
 
@@ -158,19 +167,19 @@ const fillExtrusionHeight = [
   'match',
   [
     'get',
-    'MAPCLR'
+    'ISO_A2'
   ]
 ]
-for (let iso3cd in indexData) {
-  fillExtrusionHeight.push([iso3cd])
-  fillExtrusionHeight.push(indexData[iso3cd][TYPE] * 100)
+for (let iso2cd in dailyData) {
+  fillExtrusionHeight.push([iso2cd.toUpperCase()])
+  fillExtrusionHeight.push(dailyData[iso2cd][TYPE] * 100)
 }
 fillExtrusionHeight.push(0)
 console.log(fillExtrusionHeight)
 
 map.on('load', () => {
   map.getSource('v').attribution += 
-    ` | number of ${TYPE} on ${INDEX} for test`
+    ` | number of ${TYPE} on ${DATE} from WHO`
   console.log(map.getSource('v').attribution)
   map.setPaintProperty(
     'bnda',
@@ -189,9 +198,9 @@ map.on('load', () => {
       'match',
       [
         'get',
-        'MAPCLR'
+        'ISO_A2'
       ],
-      iso3cds,
+      ISO_A2,
       [
         'rgb',
         0,
