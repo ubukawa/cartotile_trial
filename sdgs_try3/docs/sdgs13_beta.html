@@ -1,0 +1,920 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "13.1.1": {
+    "af": {
+      "names": "AFG",
+      "values": 69,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ao": {
+      "names": "AGO",
+      "values": 108,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "al": {
+      "names": "ALB",
+      "values": 160,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ar": {
+      "names": "ARG",
+      "values": 302,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "am": {
+      "names": "ARM",
+      "values": 281,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ag": {
+      "names": "ATG",
+      "values": 41,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "au": {
+      "names": "AUS",
+      "values": 101,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "bi": {
+      "names": "BDI",
+      "values": 561,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "bf": {
+      "names": "BFA",
+      "values": 0,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "bd": {
+      "names": "BGD",
+      "values": 7521,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "bg": {
+      "names": "BGR",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "bz": {
+      "names": "BLZ",
+      "values": 1631,
+      "years": 2010,
+      "unit": "PER_100000_POP"
+    },
+    "bo": {
+      "names": "BOL",
+      "values": 47,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "bb": {
+      "names": "BRB",
+      "values": 67,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "bt": {
+      "names": "BTN",
+      "values": 30,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "bw": {
+      "names": "BWA",
+      "values": 262,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ch": {
+      "names": "CHE",
+      "values": 3404,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "cl": {
+      "names": "CHL",
+      "values": 82,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "cn": {
+      "names": "CHN",
+      "values": 459,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "co": {
+      "names": "COL",
+      "values": 393,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "km": {
+      "names": "COM",
+      "values": 50,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "cv": {
+      "names": "CPV",
+      "values": 2,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "cr": {
+      "names": "CRI",
+      "values": 0,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "cy": {
+      "names": "CYP",
+      "values": 79,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "cz": {
+      "names": "CZE",
+      "values": 293,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "dj": {
+      "names": "DJI",
+      "values": 1,
+      "years": 2012,
+      "unit": "PER_100000_POP"
+    },
+    "dm": {
+      "names": "DMA",
+      "values": 12,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "ec": {
+      "names": "ECU",
+      "values": 0,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "eg": {
+      "names": "EGY",
+      "values": 21,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ee": {
+      "names": "EST",
+      "values": 45,
+      "years": 2010,
+      "unit": "PER_100000_POP"
+    },
+    "et": {
+      "names": "ETH",
+      "values": 5,
+      "years": 2012,
+      "unit": "PER_100000_POP"
+    },
+    "fi": {
+      "names": "FIN",
+      "values": 5,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "fj": {
+      "names": "FJI",
+      "values": 17075,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "fr": {
+      "names": "FRA",
+      "values": 17,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ge": {
+      "names": "GEO",
+      "values": 3,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "gh": {
+      "names": "GHA",
+      "values": 20,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "gm": {
+      "names": "GMB",
+      "values": 92,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "gw": {
+      "names": "GNB",
+      "values": 0,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "gq": {
+      "names": "GNQ",
+      "values": 35,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "gd": {
+      "names": "GRD",
+      "values": 73,
+      "years": 2011,
+      "unit": "PER_100000_POP"
+    },
+    "gt": {
+      "names": "GTM",
+      "values": 58,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "gy": {
+      "names": "GUY",
+      "values": 1143,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "hn": {
+      "names": "HND",
+      "values": 3946,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "hr": {
+      "names": "HRV",
+      "values": 183,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "id": {
+      "names": "IDN",
+      "values": 4159,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ie": {
+      "names": "IRL",
+      "values": 44,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "ir": {
+      "names": "IRN",
+      "values": 1245,
+      "years": 2011,
+      "unit": "PER_100000_POP"
+    },
+    "jm": {
+      "names": "JAM",
+      "values": 1307,
+      "years": 2012,
+      "unit": "PER_100000_POP"
+    },
+    "jo": {
+      "names": "JOR",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "jp": {
+      "names": "JPN",
+      "values": 157,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "kz": {
+      "names": "KAZ",
+      "values": 86,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ke": {
+      "names": "KEN",
+      "values": 0,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "kg": {
+      "names": "KGZ",
+      "values": 18,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "kh": {
+      "names": "KHM",
+      "values": 269,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ki": {
+      "names": "KIR",
+      "values": 159,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "kn": {
+      "names": "KNA",
+      "values": 66,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "kr": {
+      "names": "KOR",
+      "values": 43,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "kw": {
+      "names": "KWT",
+      "values": 0,
+      "years": 2011,
+      "unit": "PER_100000_POP"
+    },
+    "la": {
+      "names": "LAO",
+      "values": 82,
+      "years": 2012,
+      "unit": "PER_100000_POP"
+    },
+    "lb": {
+      "names": "LBN",
+      "values": 1,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "lc": {
+      "names": "LCA",
+      "values": 1,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "lk": {
+      "names": "LKA",
+      "values": 488,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ma": {
+      "names": "MAR",
+      "values": 0,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "mg": {
+      "names": "MDG",
+      "values": 654,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "mv": {
+      "names": "MDV",
+      "values": 23,
+      "years": 2008,
+      "unit": "PER_100000_POP"
+    },
+    "mx": {
+      "names": "MEX",
+      "values": 200,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "mh": {
+      "names": "MHL",
+      "values": 529,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "ml": {
+      "names": "MLI",
+      "values": 1440,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "mm": {
+      "names": "MMR",
+      "values": 1917,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "me": {
+      "names": "MNE",
+      "values": 155,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "mn": {
+      "names": "MNG",
+      "values": 277,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "mz": {
+      "names": "MOZ",
+      "values": 212,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "mu": {
+      "names": "MUS",
+      "values": 13,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "mw": {
+      "names": "MWI",
+      "values": 770,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ny": {
+      "names": "MYS",
+      "values": 160,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "na": {
+      "names": "NAM",
+      "values": 73,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ne": {
+      "names": "NER",
+      "values": 21647,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ni": {
+      "names": "NIC",
+      "values": 310,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "no": {
+      "names": "NOR",
+      "values": 398,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "np": {
+      "names": "NPL",
+      "values": 217,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "nz": {
+      "names": "NZL",
+      "values": 12,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "pk": {
+      "names": "PAK",
+      "values": 3,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "pa": {
+      "names": "PAN",
+      "values": 39,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "pe": {
+      "names": "PER",
+      "values": 98,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ph": {
+      "names": "PHL",
+      "values": 5222,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "pw": {
+      "names": "PLW",
+      "values": 7361,
+      "years": 2012,
+      "unit": "PER_100000_POP"
+    },
+    "pg": {
+      "names": "PNG",
+      "values": 3,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "py": {
+      "names": "PRY",
+      "values": 1763,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ps": {
+      "names": "PSE",
+      "values": 42,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ro": {
+      "names": "ROU",
+      "values": 702,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "rw": {
+      "names": "RWA",
+      "values": 118,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "sd": {
+      "names": "SDN",
+      "values": 4918,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "sn": {
+      "names": "SEN",
+      "values": 8,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "sb": {
+      "names": "SLB",
+      "values": 852,
+      "years": 2013,
+      "unit": "PER_100000_POP"
+    },
+    "sl": {
+      "names": "SLE",
+      "values": 45,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "sv": {
+      "names": "SLV",
+      "values": 32,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "so": {
+      "names": "SOM",
+      "values": 44,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "rs": {
+      "names": "SRB",
+      "values": 852,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "ss": {
+      "names": "SSD",
+      "values": 4,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "si": {
+      "names": "SVN",
+      "values": 100,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "sz": {
+      "names": "SWZ",
+      "values": 13046,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "sc": {
+      "names": "SYC",
+      "values": 35,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "sy": {
+      "names": "SYR",
+      "values": 18,
+      "years": 2009,
+      "unit": "PER_100000_POP"
+    },
+    "tg": {
+      "names": "TGO",
+      "values": 28,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "th": {
+      "names": "THA",
+      "values": 206,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "tj": {
+      "names": "TJK",
+      "values": 13,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "tl": {
+      "names": "TLS",
+      "values": 63,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "to": {
+      "names": "TON",
+      "values": 79151,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "tt": {
+      "names": "TTO",
+      "values": 0,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "tn": {
+      "names": "TUN",
+      "values": 151,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "tr": {
+      "names": "TUR",
+      "values": 1,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "tz": {
+      "names": "TZA",
+      "values": 219,
+      "years": 2017,
+      "unit": "PER_100000_POP"
+    },
+    "ug": {
+      "names": "UGA",
+      "values": 118,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "ua": {
+      "names": "UKR",
+      "values": 9,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "uy": {
+      "names": "URY",
+      "values": 30,
+      "years": 2018,
+      "unit": "PER_100000_POP"
+    },
+    "vc": {
+      "names": "VCT",
+      "values": 21,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "ve": {
+      "names": "VEN",
+      "values": 3,
+      "years": 2015,
+      "unit": "PER_100000_POP"
+    },
+    "vn": {
+      "names": "VNM",
+      "values": 750,
+      "years": 2010,
+      "unit": "PER_100000_POP"
+    },
+    "vu": {
+      "names": "VUT",
+      "values": 59,
+      "years": 2014,
+      "unit": "PER_100000_POP"
+    },
+    "ws": {
+      "names": "WSM",
+      "values": 3426,
+      "years": 2009,
+      "unit": "PER_100000_POP"
+    },
+    "ye": {
+      "names": "YEM",
+      "values": 7,
+      "years": 2010,
+      "unit": "PER_100000_POP"
+    },
+    "za": {
+      "names": "ZAF",
+      "values": 70,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    },
+    "zm": {
+      "names": "ZMB",
+      "values": 18,
+      "years": 2016,
+      "unit": "PER_100000_POP"
+    }
+  }
+}
+const max = {
+  "values": 79151
+} 
+
+const INDEX = '13.1.1'
+const unit = "per 10000 pop"
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let ISO_A2
+let table = []
+let iso3cds = []
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso3cds.push(indexData[iso2cd]['names'])
+  iso2cds.push(iso2cd)
+  const g = 
+    indexData[iso2cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso2cd.toUpperCase())
+  } else {
+    table[g] = [iso2cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+for (let iso2cd in indexData) {
+  match1.push(indexData[iso2cd]['names'].toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(indexData[iso2cd]['names'].toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'ISO3CD'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE]
+  ])
+  match3.push(indexData[iso2cd]['names'].toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'MAPLAB'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    unit
+  ])
+}
+match1.push('')
+match2.push('NA')
+match3.push('No data')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'ISO3CD'
+      ],
+      iso3cds,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+
+})
+</script>
+</body>
+</html>

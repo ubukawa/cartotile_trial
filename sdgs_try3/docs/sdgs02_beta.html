@@ -1,0 +1,968 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" type="text/css" href="mapbox-gl.css">
+<style>
+body { margin: 0; top: 0; bottom: 0; width: 100%; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+<script src="mapbox-gl.js"></script>
+</head>
+<body>
+<div id="map"></div>
+<script type="module">
+const data = {
+  "2.1.1": {
+    "af": {
+      "names": "AFG",
+      "values": 10,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ao": {
+      "names": "AGO",
+      "values": 7,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "al": {
+      "names": "ALB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ae": {
+      "names": "ARE",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ar": {
+      "names": "ARG",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "am": {
+      "names": "ARM",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "az": {
+      "names": "AZE",
+      "values": 0,
+      "years": 2009,
+      "unit": "NUM_M"
+    },
+    "bj": {
+      "names": "BEN",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bf": {
+      "names": "BFA",
+      "values": 3,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bd": {
+      "names": "BGD",
+      "values": 24,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bg": {
+      "names": "BGR",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ba": {
+      "names": "BIH",
+      "values": 0,
+      "years": 2008,
+      "unit": "NUM_M"
+    },
+    "by": {
+      "names": "BLR",
+      "values": 0,
+      "years": 2005,
+      "unit": "NUM_M"
+    },
+    "bz": {
+      "names": "BLZ",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bo": {
+      "names": "BOL",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "br": {
+      "names": "BRA",
+      "values": 5,
+      "years": 2008,
+      "unit": "NUM_M"
+    },
+    "bb": {
+      "names": "BRB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bn": {
+      "names": "BRN",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "bw": {
+      "names": "BWA",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cf": {
+      "names": "CAF",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cl": {
+      "names": "CHL",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cn": {
+      "names": "CHN",
+      "values": 122,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ci": {
+      "names": "CIV",
+      "values": 4,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cm": {
+      "names": "CMR",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cg": {
+      "names": "COG",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "co": {
+      "names": "COL",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cv": {
+      "names": "CPV",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cr": {
+      "names": "CRI",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "cu": {
+      "names": "CUB",
+      "values": 0,
+      "years": 2001,
+      "unit": "NUM_M"
+    },
+    "cy": {
+      "names": "CYP",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "dj": {
+      "names": "DJI",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "dm": {
+      "names": "DMA",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "do": {
+      "names": "DOM",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "dz": {
+      "names": "DZA",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ec": {
+      "names": "ECU",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "eg": {
+      "names": "EGY",
+      "values": 4,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ee": {
+      "names": "EST",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "et": {
+      "names": "ETH",
+      "values": 21,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "fj": {
+      "names": "FJI",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ga": {
+      "names": "GAB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ge": {
+      "names": "GEO",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gh": {
+      "names": "GHA",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gn": {
+      "names": "GIN",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gm": {
+      "names": "GMB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gw": {
+      "names": "GNB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gt": {
+      "names": "GTM",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "gy": {
+      "names": "GUY",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "hn": {
+      "names": "HND",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "hr": {
+      "names": "HRV",
+      "values": 0,
+      "years": 2012,
+      "unit": "NUM_M"
+    },
+    "ht": {
+      "names": "HTI",
+      "values": 5,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "id": {
+      "names": "IDN",
+      "values": 22,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "in": {
+      "names": "IND",
+      "values": 194,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ir": {
+      "names": "IRN",
+      "values": 4,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "iq": {
+      "names": "IRQ",
+      "values": 11,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "jm": {
+      "names": "JAM",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "jo": {
+      "names": "JOR",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "jp": {
+      "names": "JPN",
+      "values": 3,
+      "years": 2010,
+      "unit": "NUM_M"
+    },
+    "kz": {
+      "names": "KAZ",
+      "values": 0,
+      "years": 2011,
+      "unit": "NUM_M"
+    },
+    "ke": {
+      "names": "KEN",
+      "values": 14,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "kg": {
+      "names": "KGZ",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "kh": {
+      "names": "KHM",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ki": {
+      "names": "KIR",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "kw": {
+      "names": "KWT",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "la": {
+      "names": "LAO",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "lb": {
+      "names": "LBN",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "lr": {
+      "names": "LBR",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "lk": {
+      "names": "LKA",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ls": {
+      "names": "LSO",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "lv": {
+      "names": "LVA",
+      "values": 0,
+      "years": 2003,
+      "unit": "NUM_M"
+    },
+    "mo": {
+      "names": "MAC",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ma": {
+      "names": "MAR",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mg": {
+      "names": "MDG",
+      "values": 11,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mv": {
+      "names": "MDV",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mx": {
+      "names": "MEX",
+      "values": 4,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mk": {
+      "names": "MKD",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ml": {
+      "names": "MLI",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mm": {
+      "names": "MMR",
+      "values": 5,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mn": {
+      "names": "MNG",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mz": {
+      "names": "MOZ",
+      "values": 8,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mr": {
+      "names": "MRT",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mu": {
+      "names": "MUS",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "mw": {
+      "names": "MWI",
+      "values": 3,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ny": {
+      "names": "MYS",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "na": {
+      "names": "NAM",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "nc": {
+      "names": "NCL",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ne": {
+      "names": "NER",
+      "values": 3,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ng": {
+      "names": "NGA",
+      "values": 25,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ni": {
+      "names": "NIC",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "np": {
+      "names": "NPL",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "om": {
+      "names": "OMN",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "pk": {
+      "names": "PAK",
+      "values": 40,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "pa": {
+      "names": "PAN",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "pe": {
+      "names": "PER",
+      "values": 3,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ph": {
+      "names": "PHL",
+      "values": 13,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "kp": {
+      "names": "PRK",
+      "values": 12,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "py": {
+      "names": "PRY",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "pf": {
+      "names": "PYF",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ru": {
+      "names": "RUS",
+      "values": 3,
+      "years": 2004,
+      "unit": "NUM_M"
+    },
+    "rw": {
+      "names": "RWA",
+      "values": 4,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sa": {
+      "names": "SAU",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sd": {
+      "names": "SDN",
+      "values": 8,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sn": {
+      "names": "SEN",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sb": {
+      "names": "SLB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sl": {
+      "names": "SLE",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sv": {
+      "names": "SLV",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "rs": {
+      "names": "SRB",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "st": {
+      "names": "STP",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sr": {
+      "names": "SUR",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sk": {
+      "names": "SVK",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "sz": {
+      "names": "SWZ",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "td": {
+      "names": "TCD",
+      "values": 5,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tg": {
+      "names": "TGO",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "th": {
+      "names": "THA",
+      "values": 5,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tm": {
+      "names": "TKM",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tl": {
+      "names": "TLS",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tt": {
+      "names": "TTO",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tn": {
+      "names": "TUN",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "tz": {
+      "names": "TZA",
+      "values": 17,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ug": {
+      "names": "UGA",
+      "values": 17,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ua": {
+      "names": "UKR",
+      "values": 1,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "uy": {
+      "names": "URY",
+      "values": 0,
+      "years": 2009,
+      "unit": "NUM_M"
+    },
+    "uz": {
+      "names": "UZB",
+      "values": 2,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "vc": {
+      "names": "VCT",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ve": {
+      "names": "VEN",
+      "values": 6,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "vn": {
+      "names": "VNM",
+      "values": 8,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "vu": {
+      "names": "VUT",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ws": {
+      "names": "WSM",
+      "values": 0,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "ye": {
+      "names": "YEM",
+      "values": 11,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "za": {
+      "names": "ZAF",
+      "values": 3,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "zm": {
+      "names": "ZMB",
+      "values": 8,
+      "years": 2017,
+      "unit": "NUM_M"
+    },
+    "zw": {
+      "names": "ZWE",
+      "values": 8,
+      "years": 2017,
+      "unit": "NUM_M"
+    }
+  }
+}
+const max = {
+  "values": 194
+} 
+
+const INDEX = '2.1.1'
+const unit = "NUM_M"
+const TYPE = 'values'
+
+const indexData = data[INDEX]
+console.log(indexData)
+
+let ISO_A2
+let table = []
+let iso3cds = []
+let iso2cds = []
+for (let iso2cd in indexData) {
+  iso3cds.push(indexData[iso2cd]['names'])
+  iso2cds.push(iso2cd)
+  const g = 
+    indexData[iso2cd][TYPE] / 
+    max[TYPE]
+  if (table[g]) {
+    table[g].push(iso2cd.toUpperCase())
+  } else {
+    table[g] = [iso2cd.toUpperCase()]
+  }
+}
+let fillExpression = [
+  'match',
+  [
+    'get',
+    'ISO_A2'
+  ]
+]
+for (let g in table) {
+  fillExpression.push(table[g])
+  fillExpression.push('hsl(' + parseInt(60 - g * 60) + ', 100%, 50%)')
+}
+fillExpression.push([
+  'rgb',
+  250,
+  250,
+  250
+])
+
+const map = new mapboxgl.Map({
+  container: 'map',
+  style: 'https://ubukawa.github.io/nat-tile/style.json',
+  attributionControl: true,
+  hash: true,
+  renderWorldCopies: false
+})
+map.addControl(new mapboxgl.NavigationControl())
+
+let match1 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+let match2 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+let match3 = [
+  'match',
+  [
+    'get',
+    'ISO3CD'
+  ]
+]
+for (let iso2cd in indexData) {
+  match1.push(indexData[iso2cd]['names'].toUpperCase())
+  match1.push(indexData[iso2cd]['values'].toString())
+  match2.push(indexData[iso2cd]['names'].toUpperCase())
+  match2.push([
+    'concat',
+    [
+      'get',
+      'ISO3CD'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE]
+  ])
+  match3.push(indexData[iso2cd]['names'].toUpperCase())
+  match3.push([
+    'concat',
+    [
+      'get',
+      'MAPLAB'
+    ],
+    ': ',
+    indexData[iso2cd][TYPE],
+    ' ',
+    unit
+  ])
+}
+match1.push('')
+match2.push('NA')
+match3.push('No data')
+
+const textFieldExpression = [
+  'step',
+  [
+    'zoom'
+  ],
+  match1,
+  1,
+  match2,
+  3,
+  match3
+]
+
+
+
+map.on('load', () => {
+  map.getSource('v').attribution += 
+    ` | number of ${TYPE} on ${INDEX} for test`
+  console.log(map.getSource('v').attribution)
+  map.setPaintProperty(
+    'bnda',
+    'fill-color',
+    fillExpression
+  )
+  map.setLayoutProperty(
+    'text',
+    'text-field',
+    textFieldExpression
+  )
+  map.setPaintProperty(
+    'text',
+    'text-color',
+    [
+      'match',
+      [
+        'get',
+        'ISO3CD'
+      ],
+      iso3cds,
+      [
+        'rgb',
+        0,
+        0,
+        0
+      ],
+      [
+        'rgb',
+        250,
+        250,
+        250
+      ]
+    ]
+  )
+
+})
+</script>
+</body>
+</html>

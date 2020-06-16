@@ -1,0 +1,24 @@
+desc 'host the site'
+task :host do
+  sh "budo -d docs"
+end
+
+desc 'build the site'
+task :build do
+  sh "ruby build_beta_01.rb src/01.csv > docs/sdgs01_beta.html"
+  sh "ruby build_beta_02.rb src/02.csv > docs/sdgs02_beta.html"
+  sh "ruby build_beta_03.rb src/03.csv > docs/sdgs03_beta.html"
+  sh "ruby build_beta_04.rb src/04.csv > docs/sdgs04_beta.html"
+  sh "ruby build_beta_05.rb src/05.csv > docs/sdgs05_beta.html"
+  sh "ruby build_beta_06.rb src/06.csv > docs/sdgs06_beta.html"
+  sh "ruby build_beta_07.rb src/07.csv > docs/sdgs07_beta.html"
+  sh "ruby build_beta_08.rb src/08.csv > docs/sdgs08_beta.html"
+  sh "ruby build_beta_09.rb src/09.csv > docs/sdgs09_beta.html"
+  sh "ruby build_beta_10.rb src/10.csv > docs/sdgs10_beta.html"
+  sh "ruby build_beta_11.rb src/11.csv > docs/sdgs11_beta.html"
+  sh "ruby build_beta_12.rb src/12.csv > docs/sdgs12_beta.html"
+  sh "ruby build_beta_13.rb src/13.csv > docs/sdgs13_beta.html"
+  sh "ruby build_beta_14.rb src/14.csv > docs/sdgs14_beta.html"
+  sh "ruby build_beta_15.rb src/15.csv > docs/sdgs15_beta.html"
+  sh "ruby build_beta_16.rb src/16.csv > docs/sdgs16_beta.html"
+end
